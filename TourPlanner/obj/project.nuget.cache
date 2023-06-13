@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "SBKzqBaTqXnQV0MRfHqJhzh+aXml8bI3htuNQgZUSaEm7uJiNdpGv6TzrT0wUkPY3l4MjrE0k2D8SPvEqVRLpg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Manuel_work\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

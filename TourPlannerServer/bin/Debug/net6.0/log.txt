@@ -1,0 +1,25 @@
+2023-05-23 23:24:13,864 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7293
+2023-05-23 23:24:13,874 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5293
+2023-05-23 23:24:13,880 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2023-05-23 23:24:13,881 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2023-05-23 23:24:13,882 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\TourPlanner\TourPlannerServer\
+2023-05-23 23:24:42,755 [.NET ThreadPool Worker] INFO  TourPlannerServer.Controllers.TourLogController - Fetching all tour logs.
+2023-05-23 23:24:44,040 [13] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+2023-05-23 23:24:57,145 [.NET ThreadPool Worker] INFO  TourPlannerServer.Controllers.TourController - Fetching all tours
+2023-05-23 23:24:57,166 [6] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Info", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+2023-05-23 23:24:58,193 [.NET ThreadPool Worker] INFO  TourPlannerServer.Controllers.TourController - Fetching all tours
+2023-05-23 23:24:58,230 [.NET ThreadPool Worker] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Info", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+2023-05-23 23:25:26,378 [6] INFO  Microsoft.EntityFrameworkCore.Database.Command - Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?' (DbType = DateTime), @p3='?' (DbType = Int32), @p4='?' (DbType = Object), @p5='?' (DbType = Single), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "TourLog" ("Id", "Comment", "Date", "Difficulty", "Duration", "Rating", "TourId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-05-23 23:28:00,097 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7293
+2023-05-23 23:28:00,107 [1] INFO  Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5293
+2023-05-23 23:28:00,113 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2023-05-23 23:28:00,114 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2023-05-23 23:28:00,115 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\TourPlanner\TourPlannerServer\

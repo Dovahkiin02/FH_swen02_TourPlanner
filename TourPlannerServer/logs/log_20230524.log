@@ -1,0 +1,16 @@
+2023-05-24 01:19:11.274 +02:00 [INF] Now listening on: https://localhost:7293
+2023-05-24 01:19:11.305 +02:00 [INF] Now listening on: http://localhost:5293
+2023-05-24 01:19:11.309 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-05-24 01:19:11.309 +02:00 [INF] Hosting environment: Development
+2023-05-24 01:19:11.309 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\TourPlanner\TourPlannerServer\
+2023-05-24 01:19:11.724 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-05-24 01:19:12.098 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 376.5746ms
+2023-05-24 01:19:12.127 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-05-24 01:19:12.127 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-05-24 01:19:12.136 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 8.3097ms
+2023-05-24 01:19:12.178 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 50.5421ms
+2023-05-24 01:19:12.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2023-05-24 01:19:12.200 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-05-24 01:19:12.200 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 0 628 image/png 14.6709ms
+2023-05-24 01:19:12.252 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-05-24 01:19:12.370 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 117.7018ms
