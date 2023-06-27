@@ -13,11 +13,13 @@
         Title="Tour Planner" Height="800" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".40*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <views:ToursView Grid.Column="0" Margin="2, 2, 0, 0"/>
+        <views:ToursView Grid.Column="0"/>
         <views:CreateAndEditTourView Grid.Column="1" />
+        <views:MapView Grid.Column="2" Margin="10,0,-1009,44"/>
     </Grid>
 </mah:MetroWindow>
