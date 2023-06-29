@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UdVtW762dkyA/vBQJ537zluhNHQYAYyQqdyzNYBxkdAC4JRCfHaZyHI4U5kTZGQzK94qUlsqTVdAbApyxkoibA==",
+  "dgSpecHash": "64RsRUNGoLcZeXr1ktLQL1vyyoecy8kmpuYe58Hq9j/7NxdR4AjTYRJbNvzXiqJGB6eUJGgubqYo6cXxOSPErw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
+  "projectFilePath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Manuel_work\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Manuel_work\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",

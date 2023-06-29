@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourPlannerUi.ViewModels;
 
 namespace TourPlannerUi.Views {
     /// <summary>
@@ -20,6 +21,7 @@ namespace TourPlannerUi.Views {
     public partial class CreateAndEditTourView : UserControl {
         public CreateAndEditTourView() {
             InitializeComponent();
+            //DataContext = createAndEditTourViewModel;
         }
     }
 }

@@ -17,7 +17,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <views:ToursView Grid.Column="0" Margin="2, 2, 0, 0"/>
-        <views:CreateAndEditTourView Grid.Column="1" />
+        <views:TourListView Grid.Column="0" Margin="2, 2, 0, 0"/>
+		<ContentPresenter Grid.Column="1" Content="{Binding Navigation.CurrentView}"/>
+		
     </Grid>
 </mah:MetroWindow>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {}
+    "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlanner\\TourPlanner.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {
+    "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlanner\\TourPlanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+        "projectUniqueName": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlanner\\TourPlanner.csproj",
         "projectName": "TourPlanner",
-        "projectPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+        "projectPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlanner\\TourPlanner.csproj",
         "packagesPath": "C:\\Users\\Manuel_work\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\TourPlanner\\TourPlanner\\obj\\",
+        "outputPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlanner\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Manuel_work\\AppData\\Roaming\\NuGet\\NuGet.Config",

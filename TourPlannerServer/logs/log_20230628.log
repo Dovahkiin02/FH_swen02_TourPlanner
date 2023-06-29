@@ -1,0 +1,87 @@
+2023-06-28 09:29:32.785 +02:00 [INF] Now listening on: https://localhost:7293
+2023-06-28 09:29:32.811 +02:00 [INF] Now listening on: http://localhost:5293
+2023-06-28 09:29:32.814 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-28 09:29:32.814 +02:00 [INF] Hosting environment: Development
+2023-06-28 09:29:32.814 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-06-28 09:29:34.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger - -
+2023-06-28 09:29:34.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger - - - 301 0 - 62.1126ms
+2023-06-28 09:29:34.236 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-06-28 09:29:34.438 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 201.7850ms
+2023-06-28 09:29:34.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-06-28 09:29:34.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui-bundle.js - -
+2023-06-28 09:29:34.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - -
+2023-06-28 09:29:34.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui-standalone-preset.js - -
+2023-06-28 09:29:34.468 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-06-28 09:29:34.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 3.1377ms
+2023-06-28 09:29:34.478 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-28 09:29:34.478 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-06-28 09:29:34.478 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-06-28 09:29:34.478 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - - - 200 143632 text/css 10.3308ms
+2023-06-28 09:29:34.478 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 10.3465ms
+2023-06-28 09:29:34.478 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 10.3565ms
+2023-06-28 09:29:34.526 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 57.9388ms
+2023-06-28 09:29:34.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2023-06-28 09:29:34.605 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-28 09:29:34.605 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 200 628 image/png 0.3292ms
+2023-06-28 09:29:34.671 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-06-28 09:29:34.749 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 78.3994ms
+2023-06-28 09:29:36.235 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-06-28 09:29:36.238 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-06-28 09:29:36.260 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-06-28 09:29:36.554 +02:00 [INF] Fetching all tours
+2023-06-28 09:29:37.721 +02:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Info", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+2023-06-28 09:29:37.784 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-28 09:29:37.814 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1550.4357ms
+2023-06-28 09:29:37.814 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-06-28 09:29:37.818 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1583.1851ms
+2023-06-28 13:24:00.314 +02:00 [INF] Now listening on: https://localhost:7293
+2023-06-28 13:24:00.333 +02:00 [INF] Now listening on: http://localhost:5293
+2023-06-28 13:24:00.335 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-28 13:24:00.336 +02:00 [INF] Hosting environment: Development
+2023-06-28 13:24:00.336 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-06-28 13:24:00.975 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-06-28 13:24:01.171 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 198.8372ms
+2023-06-28 13:24:01.198 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - -
+2023-06-28 13:24:01.198 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-06-28 13:24:01.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-06-28 13:24:01.200 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 1.8186ms
+2023-06-28 13:24:01.206 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-28 13:24:01.206 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - - - 0 143632 text/css 8.0596ms
+2023-06-28 13:24:01.211 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.6260ms
+2023-06-28 13:24:01.309 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2023-06-28 13:24:01.309 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-28 13:24:01.310 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 0 628 image/png 0.6987ms
+2023-06-28 13:24:01.362 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-06-28 13:24:01.435 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 72.8562ms
+2023-06-28 23:09:14.637 +02:00 [INF] Now listening on: https://localhost:7293
+2023-06-28 23:09:14.666 +02:00 [INF] Now listening on: http://localhost:5293
+2023-06-28 23:09:14.670 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-28 23:09:14.670 +02:00 [INF] Hosting environment: Development
+2023-06-28 23:09:14.671 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-06-28 23:09:15.814 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-06-28 23:09:16.133 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 321.8058ms
+2023-06-28 23:09:16.172 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - -
+2023-06-28 23:09:16.186 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-28 23:09:16.186 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-06-28 23:09:16.186 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - - - 0 143632 text/css 13.9027ms
+2023-06-28 23:09:16.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-06-28 23:09:16.191 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 4.6674ms
+2023-06-28 23:09:16.212 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.1595ms
+2023-06-28 23:09:16.291 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2023-06-28 23:09:16.292 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-28 23:09:16.292 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 0 628 image/png 1.2606ms
+2023-06-28 23:09:16.375 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-06-28 23:09:16.493 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 118.0758ms
+2023-06-28 23:09:46.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/Tour - -
+2023-06-28 23:09:46.829 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-06-28 23:09:46.851 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-06-28 23:09:47.117 +02:00 [INF] Fetching all tours
+2023-06-28 23:09:48.543 +02:00 [INF] Executed DbCommand (56ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Info", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+2023-06-28 23:09:48.654 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-28 23:09:48.696 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1840.3785ms
+2023-06-28 23:09:48.697 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-06-28 23:09:48.709 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1886.6346ms

@@ -1,20 +1,20 @@
 ﻿TourPlannerUi
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\
+c:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\
 TourPlannerUi
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\TourPlanner\TourPlannerUi\App.xaml
-3-904917076
+c:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\App.xaml
+4722560395
 
-7593789225
-2371699462354
-MainWindow.xaml;Views\CreateAndEditTourView.xaml;Views\ToursView.xaml;
+17-1378766112
+239-14760423
+MainWindow.xaml;Views\CreateAndEditTourView.xaml;Views\TourListView.xaml;Views\TourView.xaml;
 
-False
+True
 
