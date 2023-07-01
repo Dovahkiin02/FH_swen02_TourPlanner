@@ -1,0 +1,96 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TourPlannerUi.Models {
+    public class TourLogModel {
+        private HttpClient _httpClient = new();
+        public ObservableCollection<TourLog> TourLogs { get; set; } = new();
+
+        public TourLogModel() {
+            _httpClient.BaseAddress = new("https://localhost:7293/api/");
+        }
+
+        public async Task LoadTourLogsAsync(int tourId) {
+            var response = await _httpClient.GetAsync($"Tour/{tourId}/TourLogs");
+
+            if (response.IsSuccessStatusCode) {
+                var content = await response.Content.ReadAsStringAsync();
+                var tourLogs = JsonConvert.DeserializeObject<List<TourLog>>(content);
+
+                TourLogs.Clear();
+                tourLogs?.ForEach(tourLog => TourLogs.Add(tourLog));
+            } else {
+                // Handle the error.
+                throw new Exception("Failed to load tour logs.");
+            }
+        }
+
+        public async Task DeleteTourLogAsync(Guid tourLogId) {
+            var response = await _httpClient.DeleteAsync($"TourLog/{tourLogId}");
+
+            if (response.IsSuccessStatusCode) {
+                await Console.Out.WriteLineAsync("yey");
+            } else {
+                throw new Exception($"Failed to delete TourLog with Id {tourLogId}");
+            }
+        }
+
+        public async Task<HttpStatusCode> UpsertTourLogAsync(TourLog? tourLog) {
+            if (tourLog != null) {
+                var json = JsonConvert.SerializeObject(tourLog);
+                using StringContent httpContent = new(json, Encoding.UTF8, "application/json");
+                using var response = await _httpClient.PostAsync("TourLog/Upsert", httpContent);
+
+                return response.StatusCode;
+            }
+            return HttpStatusCode.NotFound;
+        }
+    }
+
+    public enum Difficulty {
+        EASY,
+        MEDIUM,
+        HARD
+    }
+
+    public record TourLog {
+        [JsonProperty("id")]
+        public Guid Id { get; init; }
+
+        [JsonProperty("date")]
+        public DateTime Date { get; init; }
+
+        [JsonProperty("difficulty")]
+        public Difficulty Difficulty { get; init; }
+
+        [JsonProperty("duration")]
+        public TimeSpan Duration { get; init; }
+
+        [JsonProperty("rating")]
+        public float Rating { get; init; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; init; }
+
+        [JsonProperty("tourId")]
+        public int TourId { get; init; }
+
+        public TourLog(Guid id, DateTime date, Difficulty difficulty, TimeSpan duration, float rating, string comment, int tourId) {
+            Id = id;
+            Date = date;
+            Difficulty = difficulty;
+            Duration = duration;
+            Rating = rating;
+            Comment = comment;
+            TourId = tourId;
+        }
+    }
+}

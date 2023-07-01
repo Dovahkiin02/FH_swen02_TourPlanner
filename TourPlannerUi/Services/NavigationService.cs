@@ -16,7 +16,7 @@ namespace TourPlannerUi.Services {
     public class NavigationService : ObservableObject, INavigationService {
 
         private ViewModel _currentView;
-        private readonly IViewModelFactory _viewModelFactory;
+        private readonly Func<IViewModelFactory> _viewModelFactoryProvider;
 
         public ViewModel CurrentView {
             get => _currentView;
@@ -27,12 +27,12 @@ namespace TourPlannerUi.Services {
             }
         }
 
-        public NavigationService(IViewModelFactory viewModelFactory) {
-            _viewModelFactory = viewModelFactory;
+        public NavigationService(Func<IViewModelFactory> viewModelFactoryProvider) {
+            _viewModelFactoryProvider = viewModelFactoryProvider;
         }
 
         public void NavigateTo<TViewModel>(object? param = null) where TViewModel : ViewModel {
-            ViewModel viewModel = _viewModelFactory.Create<TViewModel>(param);
+            ViewModel viewModel = _viewModelFactoryProvider().Create<TViewModel>(param);
             CurrentView = viewModel;
         }
     }

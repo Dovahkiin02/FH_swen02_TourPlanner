@@ -32,52 +32,50 @@ public class TourController : ControllerBase {
             return NotFound();
         }
 
-        return tour;
+        return Ok(tour);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutTour(int id, Tour tour) {
-        _logger.LogInformation($"Updating tour with ID {id}");
+    [HttpGet("{id}/TourLogs")]
+    public async Task<ActionResult<IEnumerable<TourLog>>> GetTourLogs(int id) {
+        _logger.LogInformation($"Fetching tourLogs for Tour with ID {id}");
+        var tourLogs = await _context.TourLog.Where(tourLog => tourLog.TourId == id).ToListAsync();
 
-        if (id != tour.Id) {
-            _logger.LogWarning($"Mismatched tour ID in PUT request. URL ID: {id}, Body ID: {tour.Id}");
-            return BadRequest(new { error = "Mismatched tour ID in PUT request." });
+        if (tourLogs == null || !tourLogs.Any()) {
+            return NotFound();
         }
 
-        _context.Entry(tour).State = EntityState.Modified;
+        return Ok(tourLogs);
+    }
+
+    [HttpPost("Upsert")]
+    public async Task<ActionResult<Tour>> UpsertTour(Tour tour) {
+        _logger.LogInformation($"Upserting tour with ID {tour.Id}");
+        _logger.LogInformation($"test");
 
         try {
+            // Look for an existing tour with the same ID
+            var existingTour = await _context.Tour.FindAsync(tour.Id);
+
+            // If the tour exists, update it; otherwise, create a new one
+            if (existingTour != null) {
+                _logger.LogInformation($"Updating existing tour with ID {tour.Id}");
+                _context.Entry(existingTour).CurrentValues.SetValues(tour);
+            } else {
+                _logger.LogInformation($"Creating a new tour with ID {tour.Id}");
+                _context.Tour.Add(tour);
+            }
+
+            // Save the changes to the database
             await _context.SaveChangesAsync();
         } catch (DbUpdateConcurrencyException) {
-            if (!TourExists(id)) {
-                _logger.LogWarning($"Failed to update tour: Tour with ID {id} not found");
-                return NotFound(new { error = "Tour not found." });
-            } else {
-                _logger.LogError($"Concurrency exception when updating tour with ID {id}");
-                return StatusCode(500, new { error = "An error occurred while updating the tour. Please try again." });
-            }
+            _logger.LogError($"Concurrency exception when upserting tour with ID {tour.Id}");
+            return StatusCode(500, new { error = "An error occurred while upserting the tour. Please try again." });
         } catch (Exception ex) {
-            _logger.LogError($"Error when updating tour with ID {id}: {ex.Message}");
+            _logger.LogError($"Error when upserting tour with ID {tour.Id}: {ex.Message}");
             return StatusCode(500, new { error = "An unexpected error occurred. Please try again." });
         }
 
-        _logger.LogInformation($"Successfully updated tour with ID {id}");
-        return NoContent();
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<Tour>> PostTour(Tour tour) {
-        _logger.LogInformation("Creating a new tour");
-
-        try {
-            _context.Tour.Add(tour);
-            await _context.SaveChangesAsync();
-        } catch (Exception ex) {
-            _logger.LogError($"Error when creating a new tour: {ex.Message}");
-            return StatusCode(500, new { error = "An unexpected error occurred while creating the tour. Please try again." });
-        }
-
-        _logger.LogInformation($"Successfully created new tour with ID {tour.Id}");
+        _logger.LogInformation($"Successfully upserted tour with ID {tour.Id}");
         return CreatedAtAction("GetTour", new { id = tour.Id }, tour);
     }
 

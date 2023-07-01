@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="TourPlannerUi.Views.EditTourLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TourPlannerUi.Views" xmlns:converters="clr-namespace:TourPlannerUi.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:StringToTimeSpanConverter x:Key="StringToTimeSpanConverter" />
+        <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="ID" />
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding TourLog.Id}" IsEnabled="False" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="Date" />
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding TourLog.Date, Converter={StaticResource DateTimeToStringConverter}}" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content="Difficulty" />
+        <ComboBox Grid.Column="1" Grid.Row="2" SelectedItem="{Binding TourLog.Difficulty}"
+              ItemsSource="{Binding Difficulties}"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Content="Duration" />
+        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding TourLog.Duration, Converter={StaticResource StringToTimeSpanConverter}}" />
+
+        <Label Grid.Column="0" Grid.Row="4" Content="Rating" />
+        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding TourLog.Rating}" />
+
+        <Label Grid.Column="0" Grid.Row="5" Content="Comment" />
+        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding TourLog.Comment}" />
+
+        <Label Grid.Column="0" Grid.Row="6" Content="Tour ID" />
+        <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding TourLog.TourId}" IsEnabled="False" />
+
+        <StackPanel Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0 2 0 0">
+            <Button Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" />
+            <Button Grid.Column="1" Content="Cancel" Command="{Binding CancelCommand}" Margin="15 0 0 0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -19,8 +19,20 @@ namespace TourPlannerUi.ViewModels {
             }
         }
 
-        public MainViewModel(INavigationService navService) {
+        private TourListViewModel _tourListViewModel;
+
+        public TourListViewModel TourListViewModel {
+            get => _tourListViewModel; 
+            set { 
+                _tourListViewModel = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
+        public MainViewModel(INavigationService navService, TourListViewModel tourListViewModel) {
             _navigation = navService;
+            TourListViewModel = tourListViewModel; 
         }
     }
 }

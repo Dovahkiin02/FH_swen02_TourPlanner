@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\App.xaml
-4722560395
+5195882611
 
-17-1378766112
+21-60112049
 239-14760423
-MainWindow.xaml;Views\CreateAndEditTourView.xaml;Views\TourListView.xaml;Views\TourView.xaml;
+MainWindow.xaml;Views\CreateAndEditTourView.xaml;Views\EditTourLogView.xaml;Views\TourListView.xaml;Views\TourView.xaml;
 
 False
 

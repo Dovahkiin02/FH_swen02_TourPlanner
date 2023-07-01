@@ -32,6 +32,8 @@ namespace TourPlannerUi.ViewModels {
         [ObservableProperty]
         private Tour selectedTour;
 
+        private bool _suppressNavigation = false;
+
         [ObservableProperty]
         private String searchText;
 
@@ -39,9 +41,9 @@ namespace TourPlannerUi.ViewModels {
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
 
-        public TourListViewModel(INavigationService navService) {
-            _tourListModel = new TourModel();
-            LoadToursAsync().Wait(new TimeSpan(0, 0, 1));
+        public TourListViewModel(INavigationService navService, TourModel tourModel) {
+            _tourListModel = tourModel;
+            LoadToursAsync().Wait(new TimeSpan(100));
 
             Navigation = navService;
 
@@ -50,22 +52,32 @@ namespace TourPlannerUi.ViewModels {
             DeleteTourCommand = new RelayCommand<Tour>(OnDeleteTour);
         }
 
+        public async Task LoadToursAsync() {
+            await _tourListModel.LoadToursAsync();
+        }
+
+        partial void OnSelectedTourChanged(Tour tour) {
+            if (_suppressNavigation) {
+                _suppressNavigation = false;
+                return;
+            }
+            Navigation.NavigateTo<TourViewModel>(tour);
+        }
+
 
         private void OnCreateTour() {
             Navigation.NavigateTo<CreateAndEditTourViewModel>();
-            Console.WriteLine("something");
         }
 
         private void OnEditTour(Tour? tour) {
             Navigation.NavigateTo<CreateAndEditTourViewModel>(tour);
-            Console.WriteLine(tour);
+            _suppressNavigation = true;
+            SelectedTour = tour;
         }
 
         private void OnDeleteTour(Tour? tour) {
             Console.WriteLine(tour);
         }
-        public async Task LoadToursAsync() {
-            await _tourListModel.LoadToursAsync();
-        }
+        
     }
 }

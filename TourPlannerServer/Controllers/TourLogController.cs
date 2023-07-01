@@ -51,49 +51,8 @@ namespace TourPlannerServer.Controllers {
             }
         }
 
-        // PUT: api/TourLogs/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTourLog(Guid id, TourLogDto tourLogDto) {
-            if (id != tourLogDto.Id) {
-                _logger.LogWarning($"Mismatch between URL ID {id} and TourLogDto ID {tourLogDto.Id}.");
-                return BadRequest(new { error = "The ID in the URL does not match the ID in the provided data." });
-            }
-
-            var tourLog = await _context.TourLog.FindAsync(id);
-            if (tourLog == null) {
-                _logger.LogWarning($"No tour log found with ID {id} for update.");
-                return NotFound(new { error = "A TourLog with this ID does not exist." });
-            }
-
-            var updatedTourLog = new TourLog {
-                Id = tourLogDto.Id,
-                Date = tourLogDto.Date,
-                Difficulty = tourLogDto.Difficulty,
-                Duration = tourLogDto.Duration,
-                Rating = tourLogDto.Rating,
-                Comment = tourLogDto.Comment,
-                TourId = tourLogDto.TourId
-            };
-
-            _context.Entry(tourLog).CurrentValues.SetValues(updatedTourLog);
-
-            try {
-                _logger.LogInformation($"Updating tour log with ID {id}.");
-                await _context.SaveChangesAsync();
-            } catch (DbUpdateConcurrencyException ex) {
-                _logger.LogError(ex, $"A concurrency conflict occurred while updating tour log with ID {id}.");
-                return Conflict(new { error = "A concurrency conflict occurred while updating the TourLog. Please try again." });
-            } catch (Exception ex) {
-                _logger.LogError(ex, $"An error occurred while updating tour log with ID {id}.");
-                return StatusCode(500, new { error = "An unexpected error occurred while updating the tour log." });
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/TourLogs
-        [HttpPost]
-        public async Task<ActionResult<TourLog>> CreateTourLog(TourLogDto tourLogDto) {
+        [HttpPost("Upsert")]
+        public async Task<ActionResult<TourLog>> UpsertTourLog(TourLogDto tourLogDto) {
             try {
                 TourLog tourLog = new TourLog {
                     Id = tourLogDto.Id,
@@ -105,16 +64,29 @@ namespace TourPlannerServer.Controllers {
                     TourId = tourLogDto.TourId
                 };
 
-                _context.TourLog.Add(tourLog);
-                await _context.SaveChangesAsync();
+                var existingTourLog = await _context.TourLog.FindAsync(tourLogDto.Id);
 
+                if (existingTourLog != null) {
+                    _logger.LogInformation($"Updating tour log with ID {tourLogDto.Id}.");
+                    _context.Entry(existingTourLog).CurrentValues.SetValues(tourLog);
+                } else {
+                    _logger.LogInformation($"Creating new tour log with ID {tourLogDto.Id}.");
+                    _context.TourLog.Add(tourLog);
+                }
+
+                await _context.SaveChangesAsync();
                 return CreatedAtAction(nameof(GetTourLog), new { id = tourLog.Id }, tourLog);
             } catch (DbUpdateException ex) when (ex.InnerException is PostgresException pgEx && pgEx.SqlState == "23505") {
+                _logger.LogError(ex, $"A TourLog with ID {tourLogDto.Id} already exists.");
                 return Conflict(new { error = "A TourLog with this ID already exists." });
+
             } catch (DbUpdateException ex) when (ex.InnerException is PostgresException pgEx && pgEx.SqlState == "23503") {
+                _logger.LogError(ex, $"The referenced Tour does not exist.");
                 return BadRequest(new { error = "The referenced Tour does not exist." });
+
             } catch (Exception ex) {
-                return StatusCode(500, new { error = "An unexpected error occurred while creating the tour log." });
+                _logger.LogError(ex, $"An unexpected error occurred while upserting the tour log with ID {tourLogDto.Id}.");
+                return StatusCode(500, new { error = "An unexpected error occurred while upserting the tour log." });
             }
         }
 

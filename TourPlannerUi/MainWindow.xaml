@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <views:TourListView Grid.Column="0" Margin="2, 2, 0, 0"/>
+        <ContentControl Grid.Column="0" Margin="2, 2, 0, 0" Content="{Binding TourListViewModel}"/>
 		<ContentPresenter Grid.Column="1" Content="{Binding Navigation.CurrentView}"/>
 		
     </Grid>
