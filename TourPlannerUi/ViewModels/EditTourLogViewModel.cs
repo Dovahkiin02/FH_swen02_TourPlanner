@@ -24,11 +24,11 @@ namespace TourPlannerUi.ViewModels {
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-
-        public EditTourLogViewModel(TourLog tourLog, INavigationService navService, TourLogModel tourLogModel) {
+        public EditTourLogViewModel(TourLog? tourLog, INavigationService navService, TourLogModel tourLogModel) {
             _navigationService = navService;
             _tourLogModel = tourLogModel;
-            TourLog = tourLog;
+
+            TourLog = tourLog ?? new();
 
             SaveCommand = new RelayCommand(OnSave);
             CancelCommand = new RelayCommand(OnCancel);

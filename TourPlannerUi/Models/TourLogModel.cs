@@ -33,14 +33,13 @@ namespace TourPlannerUi.Models {
             }
         }
 
-        public async Task DeleteTourLogAsync(Guid tourLogId) {
+        public async Task<HttpStatusCode> DeleteTourLogAsync(Guid? tourLogId) {
+            if (tourLogId == null) {
+                return HttpStatusCode.NotFound;
+            }
             var response = await _httpClient.DeleteAsync($"TourLog/{tourLogId}");
 
-            if (response.IsSuccessStatusCode) {
-                await Console.Out.WriteLineAsync("yey");
-            } else {
-                throw new Exception($"Failed to delete TourLog with Id {tourLogId}");
-            }
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> UpsertTourLogAsync(TourLog? tourLog) {
@@ -92,5 +91,7 @@ namespace TourPlannerUi.Models {
             Comment = comment;
             TourId = tourId;
         }
+
+        public TourLog() { }
     }
 }

@@ -23,6 +23,7 @@ namespace TourPlannerUi.ViewModels {
 
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
+        public ICommand CreateCommand { get; }
 
         public TourViewModel(Tour? tour, TourLogModel tourLogModel, INavigationService navService) {
             this.selectedTour = tour;
@@ -34,19 +35,24 @@ namespace TourPlannerUi.ViewModels {
 
             EditCommand = new RelayCommand<TourLog>(OnEdit);
             DeleteCommand = new RelayCommand<TourLog>(OnDelete);
+            CreateCommand = new RelayCommand(OnCreate);
         }
 
         public async Task LoadTourLogsAsync() {
             await _tourLogModel.LoadTourLogsAsync(SelectedTour.Id);
         }
 
-        private void OnEdit(TourLog tourLog) {
+        private void OnEdit(TourLog? tourLog) {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog);
         }
 
-        private void OnDelete(TourLog tourLog) {
-            var response = _tourLogModel.DeleteTourLogAsync(tourLog.Id);
+        private void OnDelete(TourLog? tourLog) {
+            var response = _tourLogModel.DeleteTourLogAsync(tourLog?.Id);
             _tourLogModel.LoadTourLogsAsync(SelectedTour.Id).Wait(new TimeSpan(100));
+        }
+
+        private void OnCreate() {
+            _navigation.NavigateTo<EditTourLogViewModel>();
         }
     }
 }
