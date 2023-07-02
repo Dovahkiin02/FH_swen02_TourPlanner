@@ -28,7 +28,7 @@
         </TabControl>
 
 
-        <DataGrid Grid.Row="1" x:Name="TourLogDataGrid" ItemsSource="{Binding TourLogs}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" x:Name="TourLogDataGrid" ItemsSource="{Binding TourLogs}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding TourId}" />
                 <DataGridTextColumn Header="Date/Time" Binding="{Binding Date}" />
@@ -52,7 +52,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Command="{Binding CreateTourCommand}" HorizontalAlignment="Left" Margin="0, 5, 0, 0">
+        <Button Grid.Row="2" Command="{Binding CreateCommand}" HorizontalAlignment="Left" Margin="0, 5, 0, 0">
             <StackPanel Orientation="Horizontal">
                 <iconPacks:PackIconMaterial Kind="Plus" VerticalAlignment="Center"/>
                 <TextBlock Text=" New Tour Log" VerticalAlignment="Center"/>

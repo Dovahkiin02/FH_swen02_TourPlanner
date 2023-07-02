@@ -8,11 +8,11 @@ using TourPlannerUi.ViewModels;
 
 namespace TourPlannerUi.Services {
 
-    public interface INavigationService { 
+    public interface INavigationService {
         ViewModel CurrentView { get; }
-        void NavigateTo<T>(object? param = null) where T : ViewModel;
-
+        void NavigateTo<T>(params object[] parameters) where T : ViewModel;
     }
+
     public class NavigationService : ObservableObject, INavigationService {
 
         private ViewModel _currentView;
@@ -31,8 +31,8 @@ namespace TourPlannerUi.Services {
             _viewModelFactoryProvider = viewModelFactoryProvider;
         }
 
-        public void NavigateTo<TViewModel>(object? param = null) where TViewModel : ViewModel {
-            ViewModel viewModel = _viewModelFactoryProvider().Create<TViewModel>(param);
+        public void NavigateTo<TViewModel>(params object[] parameters) where TViewModel : ViewModel {
+            ViewModel viewModel = _viewModelFactoryProvider().Create<TViewModel>(parameters);
             CurrentView = viewModel;
         }
     }

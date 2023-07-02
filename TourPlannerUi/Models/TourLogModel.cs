@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,8 +45,12 @@ namespace TourPlannerUi.Models {
 
         public async Task<HttpStatusCode> UpsertTourLogAsync(TourLog? tourLog) {
             if (tourLog != null) {
-                var json = JsonConvert.SerializeObject(tourLog);
-                using StringContent httpContent = new(json, Encoding.UTF8, "application/json");
+                tourLog = tourLog with { Date = tourLog.Date.ToUniversalTime() };
+
+                var jObject = JObject.FromObject(tourLog);
+                if (tourLog.Id == Guid.Empty) jObject.Remove("id");
+
+                using StringContent httpContent = new(jObject.ToString(), Encoding.UTF8, "application/json");
                 using var response = await _httpClient.PostAsync("TourLog/Upsert", httpContent);
 
                 return response.StatusCode;
@@ -92,6 +97,9 @@ namespace TourPlannerUi.Models {
             TourId = tourId;
         }
 
-        public TourLog() { }
+        public TourLog(int tourId) {
+            Date = DateTime.Today;
+            TourId = tourId;
+        }
     }
 }

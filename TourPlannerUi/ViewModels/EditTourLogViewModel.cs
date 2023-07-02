@@ -13,6 +13,7 @@ namespace TourPlannerUi.ViewModels {
     public partial class EditTourLogViewModel : ViewModel {
         private INavigationService _navigationService;
         private TourLogModel _tourLogModel;
+        private Tour _tour;
 
         public IEnumerable<Difficulty> Difficulties {
             get => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
@@ -24,11 +25,23 @@ namespace TourPlannerUi.ViewModels {
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public EditTourLogViewModel(TourLog? tourLog, INavigationService navService, TourLogModel tourLogModel) {
+        public EditTourLogViewModel(Tour tour, INavigationService navService, TourLogModel tourLogModel) {
             _navigationService = navService;
             _tourLogModel = tourLogModel;
+            _tour = tour;
 
-            TourLog = tourLog ?? new();
+            TourLog = new(_tour.Id);
+
+            SaveCommand = new RelayCommand(OnSave);
+            CancelCommand = new RelayCommand(OnCancel);
+        }
+
+        public EditTourLogViewModel(TourLog? tourLog, Tour tour, INavigationService navService, TourLogModel tourLogModel) {
+            _navigationService = navService;
+            _tourLogModel = tourLogModel;
+            _tour = tour;
+
+            TourLog = tourLog ?? new(_tour.Id);
 
             SaveCommand = new RelayCommand(OnSave);
             CancelCommand = new RelayCommand(OnCancel);
@@ -36,11 +49,11 @@ namespace TourPlannerUi.ViewModels {
 
         private void OnSave() {
             var response = _tourLogModel.UpsertTourLogAsync(TourLog);
-            _navigationService.NavigateTo<TourViewModel>();
+            _navigationService.NavigateTo<TourViewModel>(_tour);
         }
 
         private void OnCancel() {
-            _navigationService.NavigateTo<TourViewModel>();
+            _navigationService.NavigateTo<TourViewModel>(_tour);
         }
     }
 }

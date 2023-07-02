@@ -33,8 +33,8 @@ namespace TourPlannerUi.ViewModels {
                 LoadTourLogsAsync().Wait(new TimeSpan(100));
             }
 
-            EditCommand = new RelayCommand<TourLog>(OnEdit);
-            DeleteCommand = new RelayCommand<TourLog>(OnDelete);
+            EditCommand = new RelayCommand<TourLog>(OnEdit, tourLog => tourLog != null);
+            DeleteCommand = new RelayCommand<TourLog>(OnDelete, tourLog => tourLog != null);
             CreateCommand = new RelayCommand(OnCreate);
         }
 
@@ -43,7 +43,7 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private void OnEdit(TourLog? tourLog) {
-            _navigation.NavigateTo<EditTourLogViewModel>(tourLog);
+            _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
         private void OnDelete(TourLog? tourLog) {
@@ -52,7 +52,7 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private void OnCreate() {
-            _navigation.NavigateTo<EditTourLogViewModel>();
+            _navigation.NavigateTo<EditTourLogViewModel>(SelectedTour);
         }
     }
 }

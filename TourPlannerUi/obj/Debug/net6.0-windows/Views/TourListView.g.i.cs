@@ -78,7 +78,7 @@ namespace TourPlannerUi.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TourPlannerUi;component/views/tourlistview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TourPlannerUi;V1.0.0.0;component/views/tourlistview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\TourListView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
