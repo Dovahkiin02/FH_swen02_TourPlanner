@@ -17,11 +17,10 @@
         public TransportType TransportType { get; init; }
         public float Distance { get; init; }
         public TimeSpan EstTime { get; init; }
-        public string Info { get; init; }
         public List<TourLog> TourLogs { get; init; } = new List<TourLog>();
 
         public override string ToString() {
-            return $"Id: {Id}, Name: {Name}, Description: {Description}, From: {From}, To: {To}, TransportType: {TransportType}, Distance: {Distance}, EstTime: {EstTime}, Info: {Info}";
+            return $"Id: {Id}, Name: {Name}, Description: {Description}, From: {From}, To: {To}, TransportType: {TransportType}, Distance: {Distance}, EstTime: {EstTime}";
         }
     }
 }

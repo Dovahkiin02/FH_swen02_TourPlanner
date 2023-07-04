@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,9 +24,15 @@ namespace TourPlannerUi {
         {
             IServiceCollection services = new ServiceCollection();
 
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+
+            services.AddSingleton<IConfiguration>(configuration);
+
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<TourModel>();
             services.AddSingleton<TourLogModel>();
+            services.AddSingleton<MapQuestModel>();
             services.AddSingleton<TourListViewModel>();
 
             services.AddTransient<TourViewModel>();

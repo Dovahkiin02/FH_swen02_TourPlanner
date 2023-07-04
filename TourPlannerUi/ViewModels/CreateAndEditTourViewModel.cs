@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TourPlannerUi.Models;
 using TourPlannerUi.Services;
@@ -18,7 +19,7 @@ namespace TourPlannerUi.ViewModels {
         private Tour tour;
 
         private Tour unchangedTour;
-        private TourModel model;
+        private TourModel _tourModel;
 
         private INavigationService _navigation;
 
@@ -29,10 +30,21 @@ namespace TourPlannerUi.ViewModels {
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public CreateAndEditTourViewModel(Tour? tour, INavigationService navService, TourModel tourModel) {
-            this.tour = tour ?? new();
+        public CreateAndEditTourViewModel(INavigationService navService, TourModel tourModel) {
+            this.tour = new();
             unchangedTour = tour;
-            model = tourModel;
+            _tourModel = tourModel;
+
+            this._navigation = navService;
+
+            SaveCommand = new RelayCommand(OnSave);
+            CancelCommand = new RelayCommand(OnCancel);
+        }
+
+        public CreateAndEditTourViewModel(Tour tour, INavigationService navService, TourModel tourModel) {
+            this.tour = tour;
+            unchangedTour = tour;
+            _tourModel = tourModel;
 
             this._navigation = navService;
 
@@ -41,9 +53,12 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private async void OnSave() {
-            HttpStatusCode status = await model.UpsertTourAsync(Tour);
-            if (status == HttpStatusCode.OK) {
-                _navigation.NavigateTo<TourViewModel>(tour);
+            HttpStatusCode status = await _tourModel.UpsertTourAsync(Tour);
+            if (status == HttpStatusCode.Created) {
+                _tourModel.LoadToursAsync().Wait(new TimeSpan(100));
+                _navigation.NavigateTo<TourViewModel>(Tour);
+            } else {
+                MessageBox.Show(status.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }

@@ -24,13 +24,15 @@ namespace TourPlannerUi.Models {
 
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
-                var tourLogs = JsonConvert.DeserializeObject<List<TourLog>>(content);
-
-                TourLogs.Clear();
-                tourLogs?.ForEach(tourLog => TourLogs.Add(tourLog));
+                try {
+                    var tourLogs = JsonConvert.DeserializeObject<List<TourLog>>(content);
+                    TourLogs.Clear();
+                    tourLogs?.ForEach(tourLog => TourLogs.Add(tourLog));
+                } catch (Exception ex) {
+                    await Console.Out.WriteLineAsync(ex.Message);
+                }
             } else {
-                // Handle the error.
-                throw new Exception("Failed to load tour logs.");
+                TourLogs.Clear();
             }
         }
 
@@ -47,10 +49,10 @@ namespace TourPlannerUi.Models {
             if (tourLog != null) {
                 tourLog = tourLog with { Date = tourLog.Date.ToUniversalTime() };
 
-                var jObject = JObject.FromObject(tourLog);
-                if (tourLog.Id == Guid.Empty) jObject.Remove("id");
+                var jTourLog = JObject.FromObject(tourLog);
+                if (tourLog.Id == Guid.Empty) jTourLog.Remove("id");
 
-                using StringContent httpContent = new(jObject.ToString(), Encoding.UTF8, "application/json");
+                using StringContent httpContent = new(jTourLog.ToString(), Encoding.UTF8, "application/json");
                 using var response = await _httpClient.PostAsync("TourLog/Upsert", httpContent);
 
                 return response.StatusCode;
@@ -101,5 +103,7 @@ namespace TourPlannerUi.Models {
             Date = DateTime.Today;
             TourId = tourId;
         }
+
+        public TourLog() { }
     }
 }

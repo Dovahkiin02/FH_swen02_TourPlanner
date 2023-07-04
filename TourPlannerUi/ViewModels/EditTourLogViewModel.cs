@@ -3,15 +3,17 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TourPlannerUi.Models;
 using TourPlannerUi.Services;
 
 namespace TourPlannerUi.ViewModels {
     public partial class EditTourLogViewModel : ViewModel {
-        private INavigationService _navigationService;
+        private INavigationService _navigation;
         private TourLogModel _tourLogModel;
         private Tour _tour;
 
@@ -26,7 +28,7 @@ namespace TourPlannerUi.ViewModels {
         public ICommand CancelCommand { get; }
 
         public EditTourLogViewModel(Tour tour, INavigationService navService, TourLogModel tourLogModel) {
-            _navigationService = navService;
+            _navigation = navService;
             _tourLogModel = tourLogModel;
             _tour = tour;
 
@@ -37,7 +39,7 @@ namespace TourPlannerUi.ViewModels {
         }
 
         public EditTourLogViewModel(TourLog? tourLog, Tour tour, INavigationService navService, TourLogModel tourLogModel) {
-            _navigationService = navService;
+            _navigation = navService;
             _tourLogModel = tourLogModel;
             _tour = tour;
 
@@ -47,13 +49,17 @@ namespace TourPlannerUi.ViewModels {
             CancelCommand = new RelayCommand(OnCancel);
         }
 
-        private void OnSave() {
-            var response = _tourLogModel.UpsertTourLogAsync(TourLog);
-            _navigationService.NavigateTo<TourViewModel>(_tour);
+        private async void OnSave() {
+            HttpStatusCode status = await _tourLogModel.UpsertTourLogAsync(TourLog);
+            if (status == HttpStatusCode.Created) {
+                _navigation.NavigateTo<TourViewModel>(_tour);
+            } else {
+                MessageBox.Show(status.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void OnCancel() {
-            _navigationService.NavigateTo<TourViewModel>(_tour);
+            _navigation.NavigateTo<TourViewModel>(_tour);
         }
     }
 }

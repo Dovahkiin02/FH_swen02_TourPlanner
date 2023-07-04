@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourPlannerUi.Views" xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+             xmlns:converters="clr-namespace:TourPlannerUi.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:BooleanToYesNoConverter x:Key="BoolToYesNoConverter"/>
+    </UserControl.Resources>
+
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -16,21 +22,68 @@
 
         <TabControl Grid.Row="0">
             <TabItem Header="Tour Info">
-                <StackPanel>
-                    <!-- Place your controls to display the tour info here -->
-                    <TextBlock Text="{Binding SelectedTour.Name}" />
-                    <!-- ... -->
-                </StackPanel>
+                <ScrollViewer>
+                    <StackPanel Margin="20">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="ID: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.Id}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Name: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.Name}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Description: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.Description}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="From: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.From}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="To: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.To}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Transport Type: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.TransportType}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Distance: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.Distance}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Estimated Time: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.EstTime}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Popularity: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.Popularity}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Child Friendly: " FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedTour.ChildFriendly}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Tour Map">
-                <Image Source="{Binding SelectedTour.MapImageUri}" />
+                <Image Source="{Binding SelectedTour.MapImageUrl}" />
             </TabItem>
         </TabControl>
 
 
-        <DataGrid Grid.Row="1" x:Name="TourLogDataGrid" ItemsSource="{Binding TourLogs}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+        <DataGrid Grid.Row="1" x:Name="TourLogDataGrid" ItemsSource="{Binding TourLogs}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding TourId}" />
                 <DataGridTextColumn Header="Date/Time" Binding="{Binding Date}" />
                 <DataGridTextColumn Header="Difficulty" Binding="{Binding Difficulty}" />
                 <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" />

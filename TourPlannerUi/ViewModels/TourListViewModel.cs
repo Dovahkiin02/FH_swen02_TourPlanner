@@ -66,6 +66,7 @@ namespace TourPlannerUi.ViewModels {
 
 
         private void OnCreateTour() {
+            _suppressNavigation = true;
             Navigation.NavigateTo<CreateAndEditTourViewModel>();
         }
 
