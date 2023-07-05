@@ -67,6 +67,14 @@ namespace TourPlannerUi.Models {
         HARD
     }
 
+    public enum Rating {
+        Poor,
+        Fair,
+        Good,
+        VeryGood,
+        Excellent
+    }
+
     public record TourLog {
         [JsonProperty("id")]
         public Guid Id { get; init; }
@@ -81,7 +89,7 @@ namespace TourPlannerUi.Models {
         public TimeSpan Duration { get; init; }
 
         [JsonProperty("rating")]
-        public float Rating { get; init; }
+        public Rating Rating { get; init; }
 
         [JsonProperty("comment")]
         public string Comment { get; init; }
@@ -89,7 +97,7 @@ namespace TourPlannerUi.Models {
         [JsonProperty("tourId")]
         public int TourId { get; init; }
 
-        public TourLog(Guid id, DateTime date, Difficulty difficulty, TimeSpan duration, float rating, string comment, int tourId) {
+        public TourLog(Guid id, DateTime date, Difficulty difficulty, TimeSpan duration, Rating rating, string comment, int tourId) {
             Id = id;
             Date = date;
             Difficulty = difficulty;

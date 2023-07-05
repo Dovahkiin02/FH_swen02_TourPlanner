@@ -8,12 +8,20 @@ namespace TourPlannerServer.Model {
         MEDIUM,
         HARD
     }
+
+    public enum Rating {
+        Poor,
+        Fair,
+        Good,
+        VeryGood,
+        Excellent
+    }
     public record TourLog {
         public Guid Id { get; init; }
         public DateTime Date { get; init; }
         public Difficulty Difficulty { get; init; }
         public TimeSpan Duration { get; init; }
-        public float Rating { get; init; }
+        public Rating Rating { get; init; }
         public string Comment { get; init; }
         public int TourId { get; init; }  // foreign key
         [JsonIgnore, NotMapped]
@@ -25,7 +33,7 @@ namespace TourPlannerServer.Model {
         public DateTime Date { get; init; }
         public Difficulty Difficulty { get; init; }
         public TimeSpan Duration { get; init; }
-        public float Rating { get; init; }
+        public Rating Rating { get; init; }
         public string Comment { get; init; }
         public int TourId { get; init; }  // foreign key
     }

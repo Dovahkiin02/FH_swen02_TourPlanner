@@ -79,8 +79,8 @@ namespace TourPlannerServer.Migrations
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("interval");
 
-                    b.Property<float>("Rating")
-                        .HasColumnType("real");
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
 
                     b.Property<int>("TourId")
                         .HasColumnType("integer");

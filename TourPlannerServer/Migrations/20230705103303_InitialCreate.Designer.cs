@@ -12,7 +12,7 @@ using TourPlannerServer;
 namespace TourPlannerServer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230704131309_InitialCreate")]
+    [Migration("20230705103303_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -82,8 +82,8 @@ namespace TourPlannerServer.Migrations
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("interval");
 
-                    b.Property<float>("Rating")
-                        .HasColumnType("real");
+                    b.Property<int>("Rating")
+                        .HasColumnType("integer");
 
                     b.Property<int>("TourId")
                         .HasColumnType("integer");

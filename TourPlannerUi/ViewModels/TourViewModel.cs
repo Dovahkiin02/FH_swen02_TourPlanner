@@ -24,33 +24,39 @@ namespace TourPlannerUi.ViewModels {
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand CreateCommand { get; }
+        //public ICommand LoadedCommand { get; }
 
         public TourViewModel(Tour tour, TourLogModel tourLogModel, INavigationService navService) {
             this.selectedTour = tour;
             _tourLogModel = tourLogModel;
             _navigation = navService;
 
-            Task.Run(() => LoadAndAssignTourLogsAsync()).GetAwaiter().GetResult();
-
-
             EditCommand = new RelayCommand<TourLog>(OnEdit);
             DeleteCommand = new RelayCommand<TourLog>(OnDelete);
             CreateCommand = new RelayCommand(OnCreate);
+            //LoadedCommand = new RelayCommand(async () => await LoadAndAssignTourLogsAsync());
+
+            LoadAndAssignTourLogsAsync();
         }
 
-        private async Task LoadAndAssignTourLogsAsync() {
+        private async void LoadAndAssignTourLogsAsync() {
             await _tourLogModel.LoadTourLogsAsync(SelectedTour.Id);
-            SelectedTour.TourLogs = TourLogs.ToList();
+            try {
+                SelectedTour.TourLogs.Clear();
+                TourLogs.ToList().ForEach(tourLog => SelectedTour.TourLogs.Add(tourLog));
+            } catch (Exception ex) {
+                Console.WriteLine(ex);
+            }
         }
 
 
-        private void OnEdit(TourLog? tourLog) {
+        private void OnEdit(TourLog tourLog) {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
         private async void OnDelete(TourLog? tourLog) {
             var response = _tourLogModel.DeleteTourLogAsync(tourLog?.Id);
-            await LoadAndAssignTourLogsAsync();
+            LoadAndAssignTourLogsAsync();
         }
 
         private void OnCreate() {

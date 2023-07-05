@@ -106,7 +106,7 @@ namespace TourPlannerUi.Models {
             }
         }
 
-        public List<TourLog> TourLogs { get; set; }
+        public List<TourLog> TourLogs { get; set; } = new();
         public int Popularity {
             get {
                 if (TourLogs == null)
@@ -153,6 +153,26 @@ namespace TourPlannerUi.Models {
 
         public Tour() {
             Id = -1;
+        }
+
+        public void Filter(string query) {
+            if (query == "") {
+                Tours = _tourListModel.Tours;
+                return;
+            }
+
+
+            Tours.Clear();
+            foreach (var tour in _tourListModel.Tours) {
+                // Check if any of the Tour's properties match the query
+                if (tour.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.Description.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.From.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.To.Contains(query, StringComparison.OrdinalIgnoreCase)) {
+                    Tours.Add(tour);
+                    continue;
+                }
+            }
         }
 
         public override string ToString() {

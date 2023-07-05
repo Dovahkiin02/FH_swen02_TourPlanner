@@ -21,7 +21,6 @@ namespace TourPlannerUi.Views {
     public partial class CreateAndEditTourView : UserControl {
         public CreateAndEditTourView() {
             InitializeComponent();
-            //DataContext = createAndEditTourViewModel;
         }
     }
 }

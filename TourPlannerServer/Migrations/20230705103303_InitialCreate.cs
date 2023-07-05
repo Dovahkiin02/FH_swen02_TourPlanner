@@ -39,7 +39,7 @@ namespace TourPlannerServer.Migrations
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Difficulty = table.Column<int>(type: "integer", nullable: false),
                     Duration = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    Rating = table.Column<float>(type: "real", nullable: false),
+                    Rating = table.Column<int>(type: "integer", nullable: false),
                     Comment = table.Column<string>(type: "text", nullable: false),
                     TourId = table.Column<int>(type: "integer", nullable: false)
                 },

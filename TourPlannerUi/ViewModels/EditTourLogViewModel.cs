@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,6 +20,10 @@ namespace TourPlannerUi.ViewModels {
 
         public IEnumerable<Difficulty> Difficulties {
             get => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
+        }
+
+        public IEnumerable<Rating> Ratings {
+            get => Enum.GetValues(typeof(Rating)).Cast<Rating>();
         }
 
         [ObservableProperty]

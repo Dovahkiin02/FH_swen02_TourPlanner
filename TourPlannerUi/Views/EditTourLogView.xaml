@@ -42,7 +42,8 @@
         <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding TourLog.Duration, Converter={StaticResource StringToTimeSpanConverter}}" />
 
         <Label Grid.Column="0" Grid.Row="4" Content="Rating" />
-        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding TourLog.Rating}" />
+        <ComboBox Grid.Column="1" Grid.Row="4" SelectedItem="{Binding TourLog.Rating}"
+              ItemsSource="{Binding Ratings}"/>
 
         <Label Grid.Column="0" Grid.Row="5" Content="Comment" />
         <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding TourLog.Comment}" />

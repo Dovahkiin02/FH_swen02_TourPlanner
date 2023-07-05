@@ -20,7 +20,7 @@ public class TourController : ControllerBase {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Tour>>> GetTours() {
         _logger.LogInformation("Fetching all tours");
-        return await _context.Tour.ToListAsync();
+        return await _context.Tour.OrderBy(t => t.Id).ToListAsync();
     }
 
     [HttpGet("{id}")]
