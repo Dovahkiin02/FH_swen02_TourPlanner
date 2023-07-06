@@ -112,7 +112,5 @@
                 <TextBlock Text=" New Tour Log" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
-
-
     </Grid>
 </UserControl>

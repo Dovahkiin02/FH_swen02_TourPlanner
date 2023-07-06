@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
@@ -22,6 +23,8 @@ namespace TourPlannerUi.ViewModels {
         private TourModel _tourModel;
         private TourLogModel _tourLogModel;
         private INavigationService _navigation;
+        private IGeneratePdfService _generatePdf;
+        private IGenerateSumPdfService _generateSumPdf;
 
         public INavigationService Navigation {
             get => _navigation;
@@ -43,10 +46,13 @@ namespace TourPlannerUi.ViewModels {
         public ICommand CreateTourCommand { get; }
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
+        public ICommand GeneratePdfCommand { get; }
 
         public TourListViewModel(INavigationService navService, TourModel tourModel, TourLogModel tourLogModel) {
             _tourModel = tourModel;
             _tourLogModel = tourLogModel;
+            _generatePdf = new GeneratePdf();
+            _generateSumPdf = new GenerateSumPdf();
             LoadAndAssignToursAsync();
 
             Navigation = navService;
@@ -54,6 +60,7 @@ namespace TourPlannerUi.ViewModels {
             CreateTourCommand = new RelayCommand(OnCreateTour);
             EditTourCommand = new RelayCommand<Tour>(OnEditTour);
             DeleteTourCommand = new RelayCommand<Tour>(OnDeleteTour);
+            GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
         }
 
         private async void LoadAndAssignToursAsync() {
@@ -102,22 +109,35 @@ namespace TourPlannerUi.ViewModels {
             }
         }
 
-
         private void OnCreateTour() {
             _suppressNavigation = true;
             Navigation.NavigateTo<CreateAndEditTourViewModel>();
         }
 
+        private void OnGeneratePdf()
+        {
+            Debug.WriteLine("sads");
+            Debug.WriteLine(SelectedTour);
+            _generatePdf.create(SelectedTour);
+        }
+
+        //private void OnGenerateSumPdf()
+        //{
+        //    _generateSumPdf.create(_tourModel.Tours);
+        //}
+
         private void OnEditTour(Tour? tour) {
             Navigation.NavigateTo<CreateAndEditTourViewModel>(tour);
             _suppressNavigation = true;
             SelectedTour = tour;
+
+            //Debug
+            //OnGenerateSumPdf();
         }
 
         private async void OnDeleteTour(Tour? tour) {
             var response = await _tourModel.RemoveTourAsync(tour.Id);
             LoadAndAssignToursAsync();
-        }
-        
+        }  
     }
 }
