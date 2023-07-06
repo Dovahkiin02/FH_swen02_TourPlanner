@@ -36,7 +36,7 @@ namespace TourPlannerUi.Models {
             }
         }
 
-        public async Task<HttpStatusCode> DeleteTourLogAsync(Guid? tourLogId) {
+        public async Task<HttpStatusCode> RemoveTourLogAsync(Guid? tourLogId) {
             if (tourLogId == null) {
                 return HttpStatusCode.NotFound;
             }

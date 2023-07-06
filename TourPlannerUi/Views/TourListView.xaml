@@ -23,7 +23,7 @@
             <iconPacks:PackIconMaterial Grid.Column="0" Kind="Magnify" VerticalAlignment="Center" Margin="10,0,0,0" />
             <xctk:WatermarkTextBox 
                 Grid.Column="1" 
-                Text="{Binding SearchText}" 
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
                 VerticalContentAlignment="Center" 
                 VerticalAlignment="Stretch" 
                 BorderThickness="0" 

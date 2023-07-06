@@ -1,14 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ControlzEx.Standard;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Input;
 using TourPlannerUi.Models;
 using TourPlannerUi.Services;
@@ -16,8 +19,8 @@ using TourPlannerUi.Services;
 namespace TourPlannerUi.ViewModels {
     public partial class TourListViewModel : ViewModel {
 
-        private TourModel _tourListModel;
-
+        private TourModel _tourModel;
+        private TourLogModel _tourLogModel;
         private INavigationService _navigation;
 
         public INavigationService Navigation {
@@ -27,8 +30,7 @@ namespace TourPlannerUi.ViewModels {
                 OnPropertyChanged();
             }
         }
-
-        public ObservableCollection<Tour> Tours => _tourListModel.Tours;
+        public ObservableCollection<Tour> Tours => _tourModel.Tours;
 
         [ObservableProperty]
         private Tour selectedTour;
@@ -42,9 +44,10 @@ namespace TourPlannerUi.ViewModels {
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
 
-        public TourListViewModel(INavigationService navService, TourModel tourModel) {
-            _tourListModel = tourModel;
-            LoadToursAsync().Wait(new TimeSpan(100));
+        public TourListViewModel(INavigationService navService, TourModel tourModel, TourLogModel tourLogModel) {
+            _tourModel = tourModel;
+            _tourLogModel = tourLogModel;
+            LoadAndAssignToursAsync();
 
             Navigation = navService;
 
@@ -53,12 +56,40 @@ namespace TourPlannerUi.ViewModels {
             DeleteTourCommand = new RelayCommand<Tour>(OnDeleteTour);
         }
 
-        public async Task LoadToursAsync() {
-            await _tourListModel.LoadToursAsync();
+        private async void LoadAndAssignToursAsync() {
+            await _tourModel.LoadToursAsync();
+            _tourModel.Tours.ToList().ForEach(async (tour) => {
+                await _tourLogModel.LoadTourLogsAsync(tour.Id);
+                tour.TourLogs.Clear();
+                _tourLogModel.TourLogs.ToList().ForEach(tour.TourLogs.Add);
+            });
         }
 
-        partial void OnSearchTextChanged(string query) {
-            
+        partial void OnSearchTextChanging(string query) {
+            if (query == "") {
+                LoadAndAssignToursAsync();
+                return;
+            }
+
+            _tourModel.Tours.Clear();
+
+            foreach (var tour in _tourModel.UnfilterdTourList) {
+                if (tour.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.Description.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.From.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                    tour.To.Contains(query, StringComparison.OrdinalIgnoreCase)) {
+                    _tourModel.Tours.Add(tour);
+                    continue;
+                }
+
+                foreach (var tourLog in tour.TourLogs) {
+                    if (tourLog.Rating.ToString().Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                        tourLog.Comment.Contains(query, StringComparison.OrdinalIgnoreCase)) {
+                        _tourModel.Tours.Add(tour);
+                        break;
+                    }
+                }
+            }
         }
 
         partial void OnSelectedTourChanged(Tour tour) {
@@ -66,7 +97,9 @@ namespace TourPlannerUi.ViewModels {
                 _suppressNavigation = false;
                 return;
             }
-            Navigation.NavigateTo<TourViewModel>(tour);
+            if (tour != null) {
+                Navigation.NavigateTo<TourViewModel>(tour);
+            }
         }
 
 
@@ -81,8 +114,9 @@ namespace TourPlannerUi.ViewModels {
             SelectedTour = tour;
         }
 
-        private void OnDeleteTour(Tour? tour) {
-            Console.WriteLine(tour);
+        private async void OnDeleteTour(Tour? tour) {
+            var response = await _tourModel.RemoveTourAsync(tour.Id);
+            LoadAndAssignToursAsync();
         }
         
     }

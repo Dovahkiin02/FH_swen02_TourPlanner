@@ -54,8 +54,8 @@ namespace TourPlannerUi.ViewModels {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
-        private async void OnDelete(TourLog? tourLog) {
-            var response = _tourLogModel.DeleteTourLogAsync(tourLog?.Id);
+        private void OnDelete(TourLog? tourLog) {
+            var response = _tourLogModel.RemoveTourLogAsync(tourLog?.Id);
             LoadAndAssignTourLogsAsync();
         }
 

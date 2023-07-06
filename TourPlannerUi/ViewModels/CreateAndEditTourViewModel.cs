@@ -53,12 +53,12 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private async void OnSave() {
-            HttpStatusCode status = await _tourModel.UpsertTourAsync(Tour);
-            if (status == HttpStatusCode.Created) {
-                _tourModel.LoadToursAsync().Wait(new TimeSpan(100));
-                _navigation.NavigateTo<TourViewModel>(Tour);
+            Tour? createdTour = await _tourModel.UpsertTourAsync(Tour);
+            if (createdTour != null) {
+                await _tourModel.LoadToursAsync();
+                _navigation.NavigateTo<TourViewModel>(createdTour);
             } else {
-                MessageBox.Show(status.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed while trying to created new Tour", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }

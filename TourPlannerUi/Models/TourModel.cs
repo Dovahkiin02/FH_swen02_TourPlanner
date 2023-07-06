@@ -17,6 +17,7 @@ namespace TourPlannerUi.Models {
         private MapQuestModel _mapQuestModel;
 
         public ObservableCollection<Tour> Tours { get; set; } = new();
+        public List<Tour> UnfilterdTourList { get; private set; } = new();
         public TourModel(MapQuestModel mapQuestModel) {
             _httpClient.BaseAddress = new("https://localhost:7293/api/");
             _mapQuestModel = mapQuestModel;
@@ -26,17 +27,17 @@ namespace TourPlannerUi.Models {
             var response = await _httpClient.GetAsync("Tour");
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
-                await Console.Out.WriteLineAsync(content);
                 var tours = JsonConvert.DeserializeObject<List<Tour>>(content);
                 Tours.Clear();
                 tours?.ForEach((tour) => Tours.Add(tour));
+                UnfilterdTourList = Tours.ToList();
             } else {
                 // Handle the error.
                 throw new Exception("Failed to load tours.");
             }
         }
 
-        public async Task<HttpStatusCode> UpsertTourAsync(Tour? tour) {
+        public async Task<Tour?> UpsertTourAsync(Tour? tour) {
             if (tour != null) {
                 tour = await _mapQuestModel.GetRouteInfoForTour(tour);
 
@@ -54,9 +55,22 @@ namespace TourPlannerUi.Models {
                 using StringContent httpContent = new(jTour.ToString(), Encoding.UTF8, "application/json");
                 using var response = await _httpClient.PostAsync("Tour/Upsert", httpContent);
 
-                return response.StatusCode;
+                try {
+                    return JsonConvert.DeserializeObject<Tour>(await response.Content.ReadAsStringAsync());
+                } catch {
+                    return null;
+                }
             }
-            return HttpStatusCode.NotFound;
+            return null;
+        }
+
+        public async Task<HttpStatusCode> RemoveTourAsync(int tourId) {
+            if (tourId == null) {
+                return HttpStatusCode.NotFound;
+            }
+            var response = await _httpClient.DeleteAsync($"Tour/{tourId}");
+
+            return response.StatusCode;
         }
     }
 
@@ -153,26 +167,6 @@ namespace TourPlannerUi.Models {
 
         public Tour() {
             Id = -1;
-        }
-
-        public void Filter(string query) {
-            if (query == "") {
-                Tours = _tourListModel.Tours;
-                return;
-            }
-
-
-            Tours.Clear();
-            foreach (var tour in _tourListModel.Tours) {
-                // Check if any of the Tour's properties match the query
-                if (tour.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                    tour.Description.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                    tour.From.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                    tour.To.Contains(query, StringComparison.OrdinalIgnoreCase)) {
-                    Tours.Add(tour);
-                    continue;
-                }
-            }
         }
 
         public override string ToString() {
