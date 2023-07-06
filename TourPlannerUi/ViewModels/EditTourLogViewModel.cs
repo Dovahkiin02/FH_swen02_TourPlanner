@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -55,12 +56,22 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private async void OnSave() {
+            if (!TourLogValid(TourLog)) {
+                MessageBox.Show("Invalid Tour Log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             HttpStatusCode status = await _tourLogModel.UpsertTourLogAsync(TourLog);
             if (status == HttpStatusCode.Created) {
                 _navigation.NavigateTo<TourViewModel>(_tour);
             } else {
                 MessageBox.Show(status.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private bool TourLogValid(TourLog tourLog) {
+            var context = new ValidationContext(tourLog);
+            var results = new List<ValidationResult>();
+            return Validator.TryValidateObject(tourLog, context, results, true);
         }
 
         private void OnCancel() {

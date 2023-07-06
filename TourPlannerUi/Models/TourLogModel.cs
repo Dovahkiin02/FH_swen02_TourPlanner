@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net;
@@ -77,24 +78,31 @@ namespace TourPlannerUi.Models {
 
     public record TourLog {
         [JsonProperty("id")]
+        [Required]
         public Guid Id { get; init; }
 
         [JsonProperty("date")]
+        [Required]
         public DateTime Date { get; init; }
 
         [JsonProperty("difficulty")]
+        [Required]
         public Difficulty Difficulty { get; init; }
 
         [JsonProperty("duration")]
+        [Required]
         public TimeSpan Duration { get; init; }
 
         [JsonProperty("rating")]
+        [Required]
         public Rating Rating { get; init; }
 
         [JsonProperty("comment")]
+        [Required]
         public string Comment { get; init; }
 
         [JsonProperty("tourId")]
+        [Required]
         public int TourId { get; init; }
 
         public TourLog(Guid id, DateTime date, Difficulty difficulty, TimeSpan duration, Rating rating, string comment, int tourId) {

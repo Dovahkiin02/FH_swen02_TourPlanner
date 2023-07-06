@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -53,14 +54,28 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private async void OnSave() {
-            Tour? createdTour = await _tourModel.UpsertTourAsync(Tour);
-            if (createdTour != null) {
-                await _tourModel.LoadToursAsync();
-                _navigation.NavigateTo<TourViewModel>(createdTour);
-            } else {
-                MessageBox.Show("Failed while trying to created new Tour", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (!TourValid(Tour)) {
+                MessageBox.Show("Invalid Tour", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            
+            try {
+                Tour? createdTour = await _tourModel.UpsertTourAsync(Tour);
+                if (createdTour != null) {
+                    await _tourModel.LoadToursAsync();
+                    _navigation.NavigateTo<TourViewModel>(createdTour);
+                } else {
+                    MessageBox.Show("Failed while trying to created new Tour", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            } catch (InvalidPlaceException e) {
+                MessageBox.Show("Invalid From or To. Please enter valid places", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+        private bool TourValid(Tour tour) {
+            var context = new ValidationContext(tour);
+            var results = new List<ValidationResult>();
+            return Validator.TryValidateObject(tour, context, results, true);
         }
 
         private void OnCancel() {

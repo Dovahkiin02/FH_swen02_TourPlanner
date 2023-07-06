@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -87,18 +88,23 @@ namespace TourPlannerUi.Models {
         public int Id { get; init; }
 
         [JsonProperty("name")]
+        [Required]
         public string Name { get; init; }
 
         [JsonProperty("description")]
+        [Required]
         public string Description { get; init; }
 
         [JsonProperty("from")]
+        [Required]
         public string From { get; init; }
 
         [JsonProperty("to")]
+        [Required]
         public string To { get; init; }
 
         [JsonProperty("transportType")]
+        [Required]
         public TransportType TransportType { get; init; }
 
         [JsonProperty("distance")]
