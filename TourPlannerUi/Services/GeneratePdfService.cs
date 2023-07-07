@@ -1,5 +1,4 @@
 ﻿using iText.Kernel.Pdf;
-using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using TourPlannerUi.Models;
@@ -9,8 +8,6 @@ using Document = iText.Layout.Document;
 using Paragraph = iText.Layout.Element.Paragraph;
 using iText.Kernel.Pdf.Canvas.Draw;
 using iText.IO.Font.Constants;
-using System.Diagnostics;
-using System.Collections.ObjectModel;
 
 namespace TourPlannerUi.Services
 {
