@@ -97,7 +97,7 @@
                                 <Button Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" >
                                     <iconPacks:PackIconMaterial Kind="Pencil" VerticalAlignment="Center"/>
                                 </Button>
-                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="15, 0, 0, 0" >
+                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="5, 0, 0, 0" >
                                     <iconPacks:PackIconMaterial Kind="Delete" VerticalAlignment="Center"/>
                                 </Button>
                             </StackPanel>

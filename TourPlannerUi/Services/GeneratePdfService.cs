@@ -10,6 +10,8 @@ using iText.Kernel.Pdf.Canvas.Draw;
 using iText.IO.Font.Constants;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
+using System;
 
 namespace TourPlannerUi.Services
 {
@@ -21,9 +23,10 @@ namespace TourPlannerUi.Services
 
     public class GeneratePdf : IGeneratePdfService
     {
+        private const string path = "..\\..\\..\\..\\generatedPdf";
         public void create(Tour tour)
         {
-            string outputPath = $"..\\..\\..\\..\\generatedPdf\\{tour.Name}_tourLog.pdf";
+            string outputPath = $"{path}\\{tour.Name}_tourLog.pdf";
 
             PdfWriter writer = new(outputPath);
             PdfDocument pdf = new PdfDocument(writer);
@@ -47,13 +50,13 @@ namespace TourPlannerUi.Services
                 document.Add(new Paragraph($"Rating: {log.Rating}"));
                 document.Add(new Paragraph($"Comment: {log.Comment}"));
 
-                document.Add(separator);
+                if(log != tour.TourLogs.Last()) {
+                    document.Add(separator);
+                }
             }
-
 
             if (!string.IsNullOrEmpty(tour.MapImageUrl))
             {
-                document.Add(new Paragraph("Map:"));
                 Image image = new Image(ImageDataFactory.Create(tour.MapImageUrl));
 
                 image.SetWidth(document.GetPdfDocument().GetDefaultPageSize().GetWidth() - document.GetLeftMargin() - document.GetRightMargin()); 
@@ -63,13 +66,12 @@ namespace TourPlannerUi.Services
                 document.Add(image);
             }
 
-
             document.Close();
         }
 
         public void create(ObservableCollection<Tour> tours)
         {
-            string outputPath = $"..\\..\\..\\..\\generatedPdf\\{tours[0].Name}_tourSumLog.pdf";
+            string outputPath = $"{path}\\SumReport.pdf";
 
             PdfWriter writer = new(outputPath);
             PdfDocument pdf = new PdfDocument(writer);
@@ -77,13 +79,9 @@ namespace TourPlannerUi.Services
 
             LineSeparator separator = new LineSeparator(new SolidLine());
             Paragraph separatorParagraph = new Paragraph().Add(separator);
-
+   
             StringBuilder title = new StringBuilder("Average from: ");
-
-            foreach (var x in tours)
-            {
-                title.Append($"{x.Name} - ");
-            }
+            title.Append(string.Join(", ", tours.Select(x => x.Name)));
 
             Paragraph tourTitleParagraph = new Paragraph(title.ToString())
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
@@ -91,14 +89,13 @@ namespace TourPlannerUi.Services
                 .SetMarginTop(0f); 
             document.Add(tourTitleParagraph);
 
+            foreach (Tour tour in tours) {
 
-
-            foreach (var x in tours)
-            {
-                if (!string.IsNullOrEmpty(x.MapImageUrl))
+                document.Add(new Paragraph($"Tour: {tour.Name}").SetBold());
+                
+                if (!string.IsNullOrEmpty(tour.MapImageUrl))
                 {
-                    document.Add(new Paragraph("Map:"));
-                    Image image = new Image(ImageDataFactory.Create(x.MapImageUrl));
+                    Image image = new Image(ImageDataFactory.Create(tour.MapImageUrl));
 
                     image.SetWidth(document.GetPdfDocument().GetDefaultPageSize().GetWidth() - document.GetLeftMargin() - document.GetRightMargin());
                     image.SetProperty(Property.FLOAT, FloatPropertyValue.LEFT);
@@ -107,22 +104,29 @@ namespace TourPlannerUi.Services
                     document.Add(image);
                 }
 
-
-                foreach (var y in x.TourLogs)
+                foreach (TourLog log in tour.TourLogs)
                 {
-                    document.Add(new Paragraph($"Tour: {y.Id}"));
-                    document.Add(new Paragraph($"Date: {y.Date}"));
-                    document.Add(new Paragraph($"Difficulty: {y.Difficulty}"));
-                    document.Add(new Paragraph($"Duration: {y.Duration}"));
-                    document.Add(new Paragraph($"Rating: {y.Rating}"));
-                    document.Add(new Paragraph($"Comment: {y.Comment}"));
+                    document.Add(new Paragraph($"Date: {log.Date}"));
+                    document.Add(new Paragraph($"Difficulty: {log.Difficulty}"));
+                    document.Add(new Paragraph($"Duration: {log.Duration}"));
+                    document.Add(new Paragraph($"Rating: {log.Rating}"));
+                    document.Add(new Paragraph($"Comment: {log.Comment}"));
+                    document.Add(separator);
                 }
 
-                document.Add(separator);
+                double averageDuration = tour.TourLogs.Average(log => log.Duration.TotalMilliseconds);
+                double averageRating = tour.TourLogs.Average(log => (int)log.Rating);
+
+                document.Add(new Paragraph($"Average Time: {TimeSpan.FromMilliseconds(averageDuration)}").SetBold());
+                document.Add(new Paragraph($"Average Rating: {(Rating)averageRating}").SetBold());
+
+                if (tour != tours.Last()) {
+                    document.Add(new AreaBreak());
+                }
+
             }
 
             document.Close();
-
 
         }
     }
