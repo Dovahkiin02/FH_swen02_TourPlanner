@@ -62,6 +62,7 @@ namespace TourPlannerUi.ViewModels {
         private void OnGeneratePdf() {
             _generatePdf.create(SelectedTour);
         }
+        
         private void OnDelete(TourLog? tourLog) {
             var response = _tourLogModel.RemoveTourLogAsync(tourLog?.Id);
             LoadAndAssignTourLogsAsync();
