@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
 
             <iconPacks:PackIconMaterial Grid.Column="0" Kind="Magnify" VerticalAlignment="Center" Margin="10,0,0,0" />
-            <Button Command="{Binding GenerateSumPdfCommand}" CommandParameter="{Binding}" Margin="40,0,0,0" >
+            <Button Command="{Binding GeneratePdfCommand}" CommandParameter="{Binding}" Margin="40,0,0,0" >
                 <iconPacks:PackIconMaterial Kind="FilePdfBox" VerticalAlignment="Center"/>
             </Button>
             <xctk:WatermarkTextBox 
