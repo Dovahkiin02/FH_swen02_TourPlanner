@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nQIuc0H72m7pb6gk/cJuTA03WQ921iMbvavgkljklvk9xEGEuzsiLKV6vohWt6qlAPEJWPqnJYzKbF/RvWO7jQ==",
+  "dgSpecHash": "0hR+wwQB3NJau2aAqfpF8jGsrPM/674UpLMDPK4VdNdVe+eLReq0Asb4ndXN+LIi2vjx3JX6DCijsaYCYBZvng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
+  "projectFilePath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\schne\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512",
     "C:\\Users\\schne\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",

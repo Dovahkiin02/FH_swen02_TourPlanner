@@ -46,7 +46,7 @@ namespace TourPlannerUi.ViewModels {
         public ICommand CreateTourCommand { get; }
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
-        public ICommand GeneratePdfCommand { get; }
+        public ICommand GenerateSumPdfCommand { get; }
 
         public TourListViewModel(INavigationService navService, TourModel tourModel, TourLogModel tourLogModel) {
             _tourModel = tourModel;
@@ -60,7 +60,7 @@ namespace TourPlannerUi.ViewModels {
             CreateTourCommand = new RelayCommand(OnCreateTour);
             EditTourCommand = new RelayCommand<Tour>(OnEditTour);
             DeleteTourCommand = new RelayCommand<Tour>(OnDeleteTour);
-            GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
+            GenerateSumPdfCommand = new RelayCommand(OnGenerateSumPdf);
         }
 
         private async void LoadAndAssignToursAsync() {
@@ -114,17 +114,11 @@ namespace TourPlannerUi.ViewModels {
             Navigation.NavigateTo<CreateAndEditTourViewModel>();
         }
 
-        private void OnGeneratePdf()
+        private void OnGenerateSumPdf()
         {
-            Debug.WriteLine("sads");
-            Debug.WriteLine(SelectedTour);
-            _generatePdf.create(SelectedTour);
+            Debug.WriteLine("I DID IT");
+            _generateSumPdf.create(_tourModel.Tours);
         }
-
-        //private void OnGenerateSumPdf()
-        //{
-        //    _generateSumPdf.create(_tourModel.Tours);
-        //}
 
         private void OnEditTour(Tour? tour) {
             Navigation.NavigateTo<CreateAndEditTourViewModel>(tour);
@@ -132,7 +126,7 @@ namespace TourPlannerUi.ViewModels {
             SelectedTour = tour;
 
             //Debug
-            //OnGenerateSumPdf();
+            OnGenerateSumPdf();
         }
 
         private async void OnDeleteTour(Tour? tour) {
