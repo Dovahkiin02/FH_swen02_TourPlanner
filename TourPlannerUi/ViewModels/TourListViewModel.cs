@@ -24,6 +24,7 @@ namespace TourPlannerUi.ViewModels {
         private TourLogModel _tourLogModel;
         private INavigationService _navigation;
         private IGeneratePdfService _generatePdf;
+        private IDataIOService _dataIO;
 
         public INavigationService Navigation {
             get => _navigation;
@@ -46,20 +47,25 @@ namespace TourPlannerUi.ViewModels {
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
         public ICommand GeneratePdfCommand { get; }
+        public ICommand ExportDataCommand { get; }
+        public ICommand ImportDataCommand { get; }
 
         public TourListViewModel(INavigationService navService, TourModel tourModel, TourLogModel tourLogModel) {
             _tourModel = tourModel;
             _tourLogModel = tourLogModel;
             _generatePdf = new GeneratePdf();
- 
+            _dataIO = new DataIO();
+
             LoadAndAssignToursAsync();
 
             Navigation = navService;
-
+            
             CreateTourCommand = new RelayCommand(OnCreateTour);
             EditTourCommand = new RelayCommand<Tour>(OnEditTour);
             DeleteTourCommand = new RelayCommand<Tour>(OnDeleteTour);
+            ExportDataCommand = new RelayCommand<Tour>(OnExportData);
             GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
+            ImportDataCommand = new RelayCommand(OnImportData);
         }
 
         private async void LoadAndAssignToursAsync() {
@@ -113,8 +119,17 @@ namespace TourPlannerUi.ViewModels {
             Navigation.NavigateTo<CreateAndEditTourViewModel>();
         }
 
-        private void OnGeneratePdf()  {
+        private void OnGeneratePdf() {
             _generatePdf.create(_tourModel.Tours);
+        }
+
+        private void OnExportData(Tour? tour) {
+            _dataIO.exportData(tour);
+        }
+        
+        private async void OnImportData() {
+            await _tourModel.UpsertTourAsync(_dataIO.importData());
+            LoadAndAssignToursAsync();
         }
 
         private void OnEditTour(Tour? tour) {

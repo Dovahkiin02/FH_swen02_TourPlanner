@@ -1,0 +1,20 @@
+{
+  "Id": 10,
+  "Name": "FamilyTour",
+  "Description": "Trip with the family",
+  "From": "St. P\u00F6lten",
+  "To": "Wien",
+  "TransportType": 0,
+  "Distance": 66.5,
+  "E-8b13-2581ea2dedae",
+      "Date": "2023-07-05T22:00:00Z",
+      "Difficulty": 0,
+      "Duration": "01:02:03",
+      "Rating": 4,
+      "Comment": "more comment so more tourlogs",
+      "TourId": 4
+    }
+  ],
+  "Popularity": 2,
+  "ChildFriendly": false
+}
