@@ -47,7 +47,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" />
                         <Button Grid.Column="1" Command="{Binding DataContext.ExportDataCommand, ElementName=TourList}" CommandParameter="{Binding}">
-                            <iconPacks:PackIconMaterial Kind="Export" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconMaterial Kind="ContentSave" VerticalAlignment="Center"/>
                         </Button>
                         <Button Grid.Column="2" Command="{Binding DataContext.EditTourCommand, ElementName=TourList}" CommandParameter="{Binding}" Margin="5, 0, 0, 0">
                             <iconPacks:PackIconMaterial Kind="Pencil" VerticalAlignment="Center"/>

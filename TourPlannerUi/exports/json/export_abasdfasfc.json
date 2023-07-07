@@ -1,0 +1,24 @@
+{
+  "Id": 7,
+  "Name": "abasdfasfc",
+  "Description": "abc",
+  "From": "krems",
+  "To": "hollabrunn",
+  "TransportType": 0,
+  "Distance": 48.4,
+  "EstTime": "00:39:28",
+  "MapImageUrl": "https://www.mapquestapi.com/staticmap/v5/map?key=8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH\u0026size=600,400@2x\u0026format=png\u0026start=krems|flag-start\u0026end=hollabrunn|flag-end\u0026routeColor=812DD3",
+  "TourLogs": [
+    {
+      "Id": "59220832-5d3a-41f4-829b-2ca7c4427655",
+      "Date": "2023-07-05T22:00:00Z",
+      "Difficulty": 0,
+      "Duration": "00:00:00",
+      "Rating": 0,
+      "Comment": "dfg",
+      "TourId": 7
+    }
+  ],
+  "Popularity": 1,
+  "ChildFriendly": false
+}

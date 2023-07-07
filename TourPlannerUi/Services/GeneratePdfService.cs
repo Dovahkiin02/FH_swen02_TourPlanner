@@ -23,7 +23,7 @@ namespace TourPlannerUi.Services
 
     public class GeneratePdf : IGeneratePdfService {
         
-        private const string path = "..\\..\\..\\..\\generatedPdf";
+        private const string path = "..\\..\\..\\exports\\pdf";
         public void create(Tour tour) {
             string fullPath = Path.Combine(path,$"{tour.Name}_tourLog.pdf");   
 

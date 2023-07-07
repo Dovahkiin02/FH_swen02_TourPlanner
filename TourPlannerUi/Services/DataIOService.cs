@@ -24,11 +24,11 @@ namespace TourPlannerUi.Services
     public class DataIO : IDataIOService {
 
         private Tour? importedTour;
-        private const string path = "..\\..\\..\\..\\export";
+        private const string path = "..\\..\\..\\exports\\json";
 
         public void exportData(Tour tour) {
             
-            string fullPath = Path.Combine(path, "export_{tour.Name}.json");
+            string fullPath = Path.Combine(path, $"export_{tour.Name}.json");
             string jsonString = JsonSerializer.Serialize(tour, new JsonSerializerOptions { WriteIndented = true });
             
             File.WriteAllText(fullPath, jsonString);
