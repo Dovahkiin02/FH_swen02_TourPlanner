@@ -12,37 +12,38 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace TourPlannerUi.Services
 {
-    public interface IGeneratePdfService
-    {
+    public interface IGeneratePdfService {
         void create(Tour tour);
         void create(ObservableCollection<Tour> tours);
     }
 
-    public class GeneratePdf : IGeneratePdfService
-    {
+    public class GeneratePdf : IGeneratePdfService {
+        
         private const string path = "..\\..\\..\\..\\generatedPdf";
-        public void create(Tour tour)
-        {
-            string outputPath = $"{path}\\{tour.Name}_tourLog.pdf";
+        public void create(Tour tour) {
+            string fullPath = Path.Combine(path,$"{tour.Name}_tourLog.pdf");   
 
-            PdfWriter writer = new(outputPath);
+            PdfWriter writer = new(fullPath);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
             LineSeparator separator = new LineSeparator(new SolidLine());
-            Paragraph separatorParagraph = new Paragraph().Add(separator);
+            
 
-            Paragraph tourNameParagraph = new Paragraph($"Tour: {tour.Name}")
+            Paragraph tourNameParagraph = new Paragraph($"{tour.Name}")
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
                 .SetFontSize(16f)
+                .SetTextAlignment(TextAlignment.CENTER)
                 .SetMarginTop(0f);
             document.Add(tourNameParagraph);
-
-            foreach (TourLog log in tour.TourLogs)
-            {
+            document.Add(separator);
+            
+            foreach (TourLog log in tour.TourLogs) {
+                
                 document.Add(new Paragraph($"Tour: {log.Id}"));
                 document.Add(new Paragraph($"Date: {log.Date}"));
                 document.Add(new Paragraph($"Difficulty: {log.Difficulty}"));
@@ -55,8 +56,7 @@ namespace TourPlannerUi.Services
                 }
             }
 
-            if (!string.IsNullOrEmpty(tour.MapImageUrl))
-            {
+            if (!string.IsNullOrEmpty(tour.MapImageUrl)) {
                 Image image = new Image(ImageDataFactory.Create(tour.MapImageUrl));
 
                 image.SetWidth(document.GetPdfDocument().GetDefaultPageSize().GetWidth() - document.GetLeftMargin() - document.GetRightMargin()); 
@@ -69,32 +69,32 @@ namespace TourPlannerUi.Services
             document.Close();
         }
 
-        public void create(ObservableCollection<Tour> tours)
-        {
-            string outputPath = $"{path}\\SumReport.pdf";
+        public void create(ObservableCollection<Tour> tours) {
+           
+            string fullPath = Path.Combine(path, $"SumReport_{DateTime.Now.ToString("yyyyMMdd")}.pdf");
 
-            PdfWriter writer = new(outputPath);
+            PdfWriter writer = new(fullPath);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
             LineSeparator separator = new LineSeparator(new SolidLine());
             Paragraph separatorParagraph = new Paragraph().Add(separator);
    
-            StringBuilder title = new StringBuilder("Average from: ");
+            StringBuilder title = new StringBuilder("Summarize-Report of: ");
             title.Append(string.Join(", ", tours.Select(x => x.Name)));
 
             Paragraph tourTitleParagraph = new Paragraph(title.ToString())
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD))
                 .SetFontSize(16f)
+                .SetTextAlignment(TextAlignment.CENTER)
                 .SetMarginTop(0f); 
             document.Add(tourTitleParagraph);
 
             foreach (Tour tour in tours) {
 
-                document.Add(new Paragraph($"Tour: {tour.Name}").SetBold());
+                document.Add(new Paragraph($"{tour.Name}").SetBold());
                 
-                if (!string.IsNullOrEmpty(tour.MapImageUrl))
-                {
+                if (!string.IsNullOrEmpty(tour.MapImageUrl)) {
                     Image image = new Image(ImageDataFactory.Create(tour.MapImageUrl));
 
                     image.SetWidth(document.GetPdfDocument().GetDefaultPageSize().GetWidth() - document.GetLeftMargin() - document.GetRightMargin());
@@ -104,8 +104,7 @@ namespace TourPlannerUi.Services
                     document.Add(image);
                 }
 
-                foreach (TourLog log in tour.TourLogs)
-                {
+                foreach (TourLog log in tour.TourLogs) {
                     document.Add(new Paragraph($"Date: {log.Date}"));
                     document.Add(new Paragraph($"Difficulty: {log.Difficulty}"));
                     document.Add(new Paragraph($"Duration: {log.Duration}"));

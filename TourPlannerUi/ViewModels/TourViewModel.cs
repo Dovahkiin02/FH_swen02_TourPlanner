@@ -59,8 +59,7 @@ namespace TourPlannerUi.ViewModels {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
-        private void OnGeneratePdf()
-        {
+        private void OnGeneratePdf() {
             _generatePdf.create(SelectedTour);
         }
         private void OnDelete(TourLog? tourLog) {
