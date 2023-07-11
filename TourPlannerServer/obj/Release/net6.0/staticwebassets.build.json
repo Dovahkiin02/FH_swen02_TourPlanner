@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OHq3Q062Vn5ebRr53QyOtW94Q1HrImyWNddDTgCDBWo=",
+  "Source": "TourPlannerServer",
+  "BasePath": "_content/TourPlannerServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

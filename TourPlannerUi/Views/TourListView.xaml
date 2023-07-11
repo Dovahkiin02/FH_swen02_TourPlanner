@@ -21,6 +21,9 @@
             </Grid.ColumnDefinitions>
 
             <iconPacks:PackIconMaterial Grid.Column="0" Kind="Magnify" VerticalAlignment="Center" Margin="10,0,0,0" />
+            <Button Command="{Binding GenerateSumPdfCommand}" CommandParameter="{Binding}" Margin="40,0,0,0" >
+                <iconPacks:PackIconMaterial Kind="FilePdfBox" VerticalAlignment="Center"/>
+            </Button>
             <xctk:WatermarkTextBox 
                 Grid.Column="1" 
                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" 
@@ -41,7 +44,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                          
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" />
                         <Button Grid.Column="1" Command="{Binding DataContext.EditTourCommand, ElementName=TourList}" CommandParameter="{Binding}">
@@ -50,9 +53,7 @@
                         <Button Grid.Column="2" Command="{Binding DataContext.DeleteTourCommand, ElementName=TourList}" CommandParameter="{Binding}" Margin="2, 0, 0, 0">
                             <iconPacks:PackIconMaterial Kind="Delete" VerticalAlignment="Center"/>
                         </Button>
-                        <Button Grid.Column="3" Command="{Binding DataContext.GeneratePdfCommand, ElementName=TourList}" CommandParameter="{Binding}" Margin="2, 0, 0, 0">
-                            <iconPacks:PackIconMaterial Kind="FilePdfBox" VerticalAlignment="Center"/>
-                        </Button>
+                      
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

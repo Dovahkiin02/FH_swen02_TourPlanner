@@ -19,6 +19,7 @@ namespace TourPlannerUi.ViewModels {
 
         private TourLogModel _tourLogModel;
         private INavigationService _navigation;
+        private IGeneratePdfService _generatePdf;
 
         public ObservableCollection<TourLog> TourLogs => _tourLogModel.TourLogs;
 
@@ -33,11 +34,12 @@ namespace TourPlannerUi.ViewModels {
             this.selectedTour = tour;
             _tourLogModel = tourLogModel;
             _navigation = navService;
+            _generatePdf = new GeneratePdf();
 
             EditCommand = new RelayCommand<TourLog>(OnEdit);
             DeleteCommand = new RelayCommand<TourLog>(OnDelete);
             CreateCommand = new RelayCommand(OnCreate);
-            //GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
+            GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
             //LoadedCommand = new RelayCommand(async () => await LoadAndAssignTourLogsAsync());
 
             LoadAndAssignTourLogsAsync();
@@ -57,9 +59,10 @@ namespace TourPlannerUi.ViewModels {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
-        //private void OnGeneratePdf() {
-        //    Debug.WriteLine("DOOO it");
-        //}
+        private void OnGeneratePdf()
+        {
+            _generatePdf.create(SelectedTour);
+        }
         private void OnDelete(TourLog? tourLog) {
             var response = _tourLogModel.RemoveTourLogAsync(tourLog?.Id);
             LoadAndAssignTourLogsAsync();

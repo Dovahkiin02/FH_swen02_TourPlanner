@@ -1,0 +1,5 @@
+2023-07-06 17:27:36.835 +02:00 [INF] Now listening on: http://localhost:5000
+2023-07-06 17:27:36.869 +02:00 [INF] Now listening on: https://localhost:5001
+2023-07-06 17:27:36.871 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-06 17:27:36.871 +02:00 [INF] Hosting environment: Production
+2023-07-06 17:27:36.871 +02:00 [INF] Content root path: C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerServer\bin\Release\net6.0\

@@ -2,6 +2,7 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj": {}
   },
   "projects": {
@@ -15,17 +16,24 @@
         "outputPath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\obj\\",
 =======
     "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj": {}
+=======
+    "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj": {}
+>>>>>>> 950da42 (almost fin with pdf)
   },
   "projects": {
-    "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj": {
+    "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
+        "projectUniqueName": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
         "projectName": "TourPlannerServer",
-        "projectPath": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
+        "projectPath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\TourPlannerServer.csproj",
         "packagesPath": "C:\\Users\\schne\\.nuget\\packages\\",
+<<<<<<< HEAD
         "outputPath": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerServer\\obj\\",
 >>>>>>> 2be3021 (works)
+=======
+        "outputPath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerServer\\obj\\",
+>>>>>>> 950da42 (almost fin with pdf)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

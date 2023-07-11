@@ -8,7 +8,11 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TourPlannerUi
 <<<<<<< HEAD
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerUi\
 =======
 build_property.ProjectDir = C:\Users\schne\Documents\GitHome\swen\FH_swen02_TourPlanner\TourPlannerUi\
 >>>>>>> 2be3021 (works)
+=======
+build_property.ProjectDir = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerUi\
+>>>>>>> 950da42 (almost fin with pdf)
