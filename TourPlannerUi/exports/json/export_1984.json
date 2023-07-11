@@ -1,0 +1,24 @@
+{
+  "Id": 1,
+  "Name": "1984",
+  "Description": "Big bro",
+  "From": "Wien",
+  "To": "Eisenstadt",
+  "TransportType": 0,
+  "Distance": 52.4,
+  "EstTime": "00:39:26",
+  "MapImageUrl": "https://www.mapquestapi.com/staticmap/v5/map?key=8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH\u0026size=600,400@2x\u0026format=png\u0026start=Wien|flag-start\u0026end=Eisenstadt|flag-end\u0026routeColor=812DD3",
+  "TourLogs": [
+    {
+      "Id": "6f6749dd-4491-42e4-bad1-027de40c808c",
+      "Date": "2023-07-05T22:00:00Z",
+      "Difficulty": 0,
+      "Duration": "00:04:00",
+      "Rating": 4,
+      "Comment": "Very nice scenery 123",
+      "TourId": 1
+    }
+  ],
+  "Popularity": 1,
+  "ChildFriendly": false
+}

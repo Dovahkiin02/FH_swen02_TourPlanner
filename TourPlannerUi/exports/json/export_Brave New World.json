@@ -1,0 +1,24 @@
+{
+  "Id": 2,
+  "Name": "Brave New World",
+  "Description": "Happy Life, Happy Wife",
+  "From": "Krems",
+  "To": "Rust",
+  "TransportType": 3,
+  "Distance": 127.2,
+  "EstTime": "1.11:33:35",
+  "MapImageUrl": "https://www.mapquestapi.com/staticmap/v5/map?key=8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH\u0026size=600,400@2x\u0026format=png\u0026start=Krems|flag-start\u0026end=Rust|flag-end\u0026routeColor=812DD3",
+  "TourLogs": [
+    {
+      "Id": "dbabb529-0381-417a-bad7-a885d48b980d",
+      "Date": "2023-07-05T22:00:00Z",
+      "Difficulty": 1,
+      "Duration": "00:02:00",
+      "Rating": 0,
+      "Comment": "Ok, that was really damn easy",
+      "TourId": 2
+    }
+  ],
+  "Popularity": 1,
+  "ChildFriendly": false
+}

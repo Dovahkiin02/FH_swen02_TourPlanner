@@ -5462,6 +5462,7 @@
       "path": "system.runtime.interopservices.runtimeinformation/4.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6548,32 +6549,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\schne\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Manuel_work\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
+      "projectUniqueName": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
       "projectName": "TourPlannerUi",
-      "projectPath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
-      "packagesPath": "C:\\Users\\schne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\schne\\Documents\\GitHome\\SWEN\\FH_swen02_TourPlanner\\TourPlannerUi\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
-      "projectName": "TourPlannerUi",
-      "projectPath": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
-      "packagesPath": "C:\\Users\\schne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\schne\\Documents\\GitHome\\swen\\FH_swen02_TourPlanner\\TourPlannerUi\\obj\\",
->>>>>>> 2be3021 (works)
+      "projectPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlannerUi\\TourPlannerUi.csproj",
+      "packagesPath": "C:\\Users\\Manuel_work\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Manuel_work\\Documents\\FH\\FH\\semester02\\swen02\\FH_swen02_TourPlanner\\TourPlannerUi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\schne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Manuel_work\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6663,7 +6651,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

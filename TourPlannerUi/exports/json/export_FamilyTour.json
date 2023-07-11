@@ -8,26 +8,7 @@
   "Distance": 66.5,
   "EstTime": "00:48:45",
   "MapImageUrl": "https://www.mapquestapi.com/staticmap/v5/map?key=8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH\u0026size=600,400@2x\u0026format=png\u0026start=St. P\u00F6lten|flag-start\u0026end=Wien|flag-end\u0026routeColor=812DD3",
-  "TourLogs": [
-    {
-      "Id": "18de4446-5009-492d-8e26-890770d9331e",
-      "Date": "2023-07-05T22:00:00Z",
-      "Difficulty": 1,
-      "Duration": "05:16:31",
-      "Rating": 2,
-      "Comment": "Hier steht dein comment",
-      "TourId": 4
-    },
-    {
-      "Id": "ebaa1451-01a8-408f-8b13-2581ea2dedae",
-      "Date": "2023-07-05T22:00:00Z",
-      "Difficulty": 0,
-      "Duration": "01:02:03",
-      "Rating": 4,
-      "Comment": "more comment so more tourlogs",
-      "TourId": 4
-    }
-  ],
-  "Popularity": 2,
+  "TourLogs": [],
+  "Popularity": 0,
   "ChildFriendly": false
 }

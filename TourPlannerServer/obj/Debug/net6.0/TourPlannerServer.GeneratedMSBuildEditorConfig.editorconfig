@@ -5,28 +5,13 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TourPlannerServer
 build_property.RootNamespace = TourPlannerServer
-<<<<<<< HEAD
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerServer\
+build_property.ProjectDir = C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerServer
-=======
-build_property.ProjectDir = C:\Users\schne\Documents\GitHome\swen\FH_swen02_TourPlanner\TourPlannerServer\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\schne\Documents\GitHome\swen\FH_swen02_TourPlanner\TourPlannerServer
->>>>>>> 2be3021 (works)
-=======
-build_property.ProjectDir = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerServer\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\schne\Documents\GitHome\SWEN\FH_swen02_TourPlanner\TourPlannerServer
->>>>>>> 950da42 (almost fin with pdf)
+build_property.MSBuildProjectDirectory = C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer
 build_property._RazorSourceGeneratorDebug = 

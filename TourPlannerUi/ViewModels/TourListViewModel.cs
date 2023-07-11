@@ -10,7 +10,7 @@ using TourPlannerUi.Services;
 namespace TourPlannerUi.ViewModels {
     public partial class TourListViewModel : ViewModel {
 
-        private TourModel _tourModel;
+        private ITourModel _tourModel;
         private TourLogModel _tourLogModel;
         private INavigationService _navigation;
         private IGeneratePdfService _generatePdf;
@@ -23,7 +23,7 @@ namespace TourPlannerUi.ViewModels {
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<Tour> Tours => _tourModel.Tours;
+        public ObservableCollection<Tour> TourList => _tourModel.TourList;
 
         [ObservableProperty]
         private Tour selectedTour;
@@ -40,7 +40,7 @@ namespace TourPlannerUi.ViewModels {
         public ICommand ExportDataCommand { get; }
         public ICommand ImportDataCommand { get; }
 
-        public TourListViewModel(INavigationService navService, TourModel tourModel, TourLogModel tourLogModel) {
+        public TourListViewModel(INavigationService navService, ITourModel tourModel, TourLogModel tourLogModel) {
             _tourModel = tourModel;
             _tourLogModel = tourLogModel;
             _generatePdf = new GeneratePdf();
@@ -60,7 +60,7 @@ namespace TourPlannerUi.ViewModels {
 
         private async void LoadAndAssignToursAsync() {
             await _tourModel.LoadToursAsync();
-            _tourModel.Tours.ToList().ForEach(async (tour) => {
+            _tourModel.TourList.ToList().ForEach(async (tour) => {
                 await _tourLogModel.LoadTourLogsAsync(tour.Id);
                 tour.TourLogs.Clear();
                 _tourLogModel.TourLogs.ToList().ForEach(tour.TourLogs.Add);
@@ -73,21 +73,21 @@ namespace TourPlannerUi.ViewModels {
                 return;
             }
 
-            _tourModel.Tours.Clear();
+            _tourModel.TourList.Clear();
 
             foreach (var tour in _tourModel.UnfilterdTourList) {
                 if (tour.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                     tour.Description.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                     tour.From.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                     tour.To.Contains(query, StringComparison.OrdinalIgnoreCase)) {
-                    _tourModel.Tours.Add(tour);
+                    _tourModel.TourList.Add(tour);
                     continue;
                 }
 
                 foreach (var tourLog in tour.TourLogs) {
                     if (tourLog.Rating.ToString().Contains(query, StringComparison.OrdinalIgnoreCase) ||
                         tourLog.Comment.Contains(query, StringComparison.OrdinalIgnoreCase)) {
-                        _tourModel.Tours.Add(tour);
+                        _tourModel.TourList.Add(tour);
                         break;
                     }
                 }
@@ -110,7 +110,7 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private void OnGeneratePdf() {
-            _generatePdf.create(_tourModel.Tours);
+            _generatePdf.create(_tourModel.TourList);
         }
 
         private void OnExportData(Tour? tour) {

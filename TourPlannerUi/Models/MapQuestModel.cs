@@ -9,7 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TourPlannerUi.Models {
-    public class MapQuestModel {
+
+    public interface IMapQuestModel {
+        public Task<Tour> GetRouteInfoForTour(Tour tour);
+    }
+    public class MapQuestModel : IMapQuestModel {
         private readonly HttpClient _httpClient = new();
         private readonly IConfiguration _configuration;
 

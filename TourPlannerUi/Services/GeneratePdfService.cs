@@ -104,20 +104,23 @@ namespace TourPlannerUi.Services
                     document.Add(image);
                 }
 
-                foreach (TourLog log in tour.TourLogs) {
-                    document.Add(new Paragraph($"Date: {log.Date}"));
-                    document.Add(new Paragraph($"Difficulty: {log.Difficulty}"));
-                    document.Add(new Paragraph($"Duration: {log.Duration}"));
-                    document.Add(new Paragraph($"Rating: {log.Rating}"));
-                    document.Add(new Paragraph($"Comment: {log.Comment}"));
-                    document.Add(separator);
+                if (tour.TourLogs != null && tour.TourLogs.Count > 0) {
+                    foreach (TourLog log in tour.TourLogs) {
+                        document.Add(new Paragraph($"Date: {log.Date}"));
+                        document.Add(new Paragraph($"Difficulty: {log.Difficulty}"));
+                        document.Add(new Paragraph($"Duration: {log.Duration}"));
+                        document.Add(new Paragraph($"Rating: {log.Rating}"));
+                        document.Add(new Paragraph($"Comment: {log.Comment}"));
+                        document.Add(separator);
+                    }
+
+                    double averageDuration = tour.TourLogs.Average(log => log.Duration.TotalMilliseconds);
+                    double averageRating = tour.TourLogs.Average(log => (int)log.Rating);
+
+                    document.Add(new Paragraph($"Average Time: {TimeSpan.FromMilliseconds(averageDuration)}").SetBold());
+                    document.Add(new Paragraph($"Average Rating: {(Rating)averageRating}").SetBold());
                 }
-
-                double averageDuration = tour.TourLogs.Average(log => log.Duration.TotalMilliseconds);
-                double averageRating = tour.TourLogs.Average(log => (int)log.Rating);
-
-                document.Add(new Paragraph($"Average Time: {TimeSpan.FromMilliseconds(averageDuration)}").SetBold());
-                document.Add(new Paragraph($"Average Rating: {(Rating)averageRating}").SetBold());
+                
 
                 if (tour != tours.Last()) {
                     document.Add(new AreaBreak());
@@ -126,7 +129,6 @@ namespace TourPlannerUi.Services
             }
 
             document.Close();
-
         }
     }
 }

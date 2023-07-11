@@ -34,7 +34,7 @@
         </Grid>
 
         <!-- List of Tours -->
-        <ListBox x:Name="TourList" Grid.Row="1" ItemsSource="{Binding Tours}" SelectedItem="{Binding SelectedTour}">
+        <ListBox x:Name="TourList" Grid.Row="1" ItemsSource="{Binding TourList}" SelectedItem="{Binding SelectedTour}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0, 2, 0, 0">
