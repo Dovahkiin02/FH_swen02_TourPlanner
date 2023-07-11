@@ -2,7 +2,7 @@
 *.d
 
 .vs/
-
+obj/
 # Object files
 *.o
 *.ko

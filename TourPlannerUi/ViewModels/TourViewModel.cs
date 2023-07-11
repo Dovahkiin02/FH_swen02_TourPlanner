@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,11 @@ namespace TourPlannerUi.ViewModels {
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand CreateCommand { get; }
+        public ICommand GeneratePdfCommand { get; }
         //public ICommand LoadedCommand { get; }
 
-        public TourViewModel(Tour tour, TourLogModel tourLogModel, INavigationService navService) {
+        public TourViewModel(Tour tour, TourLogModel tourLogModel, INavigationService navService)
+        {
             this.selectedTour = tour;
             _tourLogModel = tourLogModel;
             _navigation = navService;
@@ -34,6 +37,7 @@ namespace TourPlannerUi.ViewModels {
             EditCommand = new RelayCommand<TourLog>(OnEdit);
             DeleteCommand = new RelayCommand<TourLog>(OnDelete);
             CreateCommand = new RelayCommand(OnCreate);
+            //GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
             //LoadedCommand = new RelayCommand(async () => await LoadAndAssignTourLogsAsync());
 
             LoadAndAssignTourLogsAsync();
@@ -49,11 +53,13 @@ namespace TourPlannerUi.ViewModels {
             }
         }
 
-
-        private void OnEdit(TourLog tourLog) {
+        private void OnEdit(TourLog? tourLog) {
             _navigation.NavigateTo<EditTourLogViewModel>(tourLog, SelectedTour);
         }
 
+        //private void OnGeneratePdf() {
+        //    Debug.WriteLine("DOOO it");
+        //}
         private void OnDelete(TourLog? tourLog) {
             var response = _tourLogModel.RemoveTourLogAsync(tourLog?.Id);
             LoadAndAssignTourLogsAsync();
