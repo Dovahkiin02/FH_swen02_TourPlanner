@@ -1,0 +1,346 @@
+2023-07-12 08:11:16.013 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:11:16.031 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:11:16.034 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:11:16.034 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:11:16.034 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:11:17.582 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:11:17.811 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 231.5614ms
+2023-07-12 08:11:17.838 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:11:17.843 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:11:17.851 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:11:17.852 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:11:17.853 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.1599ms
+2023-07-12 08:11:17.872 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:17.901 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 48.5618ms
+2023-07-12 08:11:18.018 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2023-07-12 08:11:18.029 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-07-12 08:11:18.029 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 0 628 image/png 10.4838ms
+2023-07-12 08:11:18.110 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:11:18.138 +02:00 [INF] Fetching all tours
+2023-07-12 08:11:18.215 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 104.9577ms
+2023-07-12 08:11:19.997 +02:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:11:20.070 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:11:20.105 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 2229.2108ms
+2023-07-12 08:11:20.105 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:11:20.110 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 2271.5316ms
+2023-07-12 08:11:20.335 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:11:20.335 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:11:20.336 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:20.336 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:20.345 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:20.345 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:20.358 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:11:20.358 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:11:20.405 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:11:20.407 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:11:20.410 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 64.7385ms
+2023-07-12 08:11:20.410 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:20.410 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 74.7097ms
+2023-07-12 08:11:20.415 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:11:20.415 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:11:20.415 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 70.0557ms
+2023-07-12 08:11:20.415 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:20.415 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 79.7663ms
+2023-07-12 08:11:55.666 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:11:55.688 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:11:55.691 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:11:55.692 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:11:55.692 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:11:56.325 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:11:56.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 249.3953ms
+2023-07-12 08:11:56.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:11:56.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:11:56.627 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 3.8022ms
+2023-07-12 08:11:56.635 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.7029ms
+2023-07-12 08:11:56.898 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:11:56.902 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:11:56.913 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:11:56.921 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:57.012 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 99.3115ms
+2023-07-12 08:11:57.032 +02:00 [INF] Fetching all tours
+2023-07-12 08:11:57.905 +02:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:11:57.964 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:11:57.990 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1065.9147ms
+2023-07-12 08:11:57.991 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:11:57.995 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1096.3037ms
+2023-07-12 08:11:58.144 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:11:58.144 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:11:58.145 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:58.145 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:58.152 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:58.152 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:11:58.157 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:11:58.157 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:11:58.192 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:11:58.193 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:11:58.195 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 42.5248ms
+2023-07-12 08:11:58.195 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:58.195 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 51.5310ms
+2023-07-12 08:11:58.206 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:11:58.207 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:11:58.207 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 54.4443ms
+2023-07-12 08:11:58.207 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:11:58.207 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 63.2016ms
+2023-07-12 08:12:06.285 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:12:06.304 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:12:06.307 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:12:06.307 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:12:06.307 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:12:06.758 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:12:06.962 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 206.1515ms
+2023-07-12 08:12:07.001 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:12:07.002 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:12:07.004 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.8037ms
+2023-07-12 08:12:07.014 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.9250ms
+2023-07-12 08:12:07.300 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:12:07.353 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:12:07.357 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:12:07.375 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:12:07.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 103.8801ms
+2023-07-12 08:12:07.478 +02:00 [INF] Fetching all tours
+2023-07-12 08:12:08.363 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:12:08.428 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:12:08.456 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1077.4147ms
+2023-07-12 08:12:08.456 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:12:08.460 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1107.1072ms
+2023-07-12 08:12:08.600 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:12:08.600 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:12:08.601 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:12:08.601 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:12:08.609 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:12:08.609 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:12:08.614 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:12:08.614 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:12:08.647 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:12:08.647 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:12:08.649 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 40.1217ms
+2023-07-12 08:12:08.649 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:12:08.650 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 49.0765ms
+2023-07-12 08:12:08.660 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:12:08.660 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:12:08.660 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 50.7285ms
+2023-07-12 08:12:08.660 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:12:08.660 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 59.5928ms
+2023-07-12 08:16:10.000 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:16:10.019 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:16:10.022 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:16:10.022 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:16:10.022 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:16:10.558 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:16:10.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 225.5636ms
+2023-07-12 08:16:10.816 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:16:10.816 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:16:10.819 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.6596ms
+2023-07-12 08:16:10.827 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.2404ms
+2023-07-12 08:16:11.016 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:16:11.077 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:16:11.081 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:16:11.098 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:16:11.110 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 94.2561ms
+2023-07-12 08:16:11.196 +02:00 [INF] Fetching all tours
+2023-07-12 08:16:12.109 +02:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:16:12.167 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:16:12.194 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1092.2951ms
+2023-07-12 08:16:12.194 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:16:12.199 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1121.9585ms
+2023-07-12 08:16:12.342 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:16:12.342 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:16:12.342 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:16:12.342 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:16:12.350 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:16:12.350 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:16:12.355 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:16:12.355 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:16:12.388 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:16:12.389 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:16:12.391 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 40.6726ms
+2023-07-12 08:16:12.391 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:16:12.391 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 49.2593ms
+2023-07-12 08:16:12.401 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:16:12.401 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:16:12.402 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 51.3263ms
+2023-07-12 08:16:12.402 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:16:12.402 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 59.7562ms
+2023-07-12 08:24:00.738 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:24:00.756 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:24:00.759 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:24:00.760 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:24:00.760 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:24:01.305 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:24:01.525 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 223.0140ms
+2023-07-12 08:24:01.563 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:24:01.563 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:24:01.565 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.6294ms
+2023-07-12 08:24:01.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.7065ms
+2023-07-12 08:24:01.892 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:24:01.896 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:24:01.918 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:24:02.007 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:24:02.021 +02:00 [INF] Fetching all tours
+2023-07-12 08:24:02.093 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 86.3778ms
+2023-07-12 08:24:02.897 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:24:02.959 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:24:02.987 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1065.252ms
+2023-07-12 08:24:02.987 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:24:02.991 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1098.3142ms
+2023-07-12 08:24:03.133 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:24:03.133 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:24:03.134 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:24:03.134 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:24:03.141 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:24:03.141 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:24:03.146 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:24:03.146 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:24:03.179 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:24:03.179 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:24:03.181 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 39.7908ms
+2023-07-12 08:24:03.181 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:24:03.182 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 48.7987ms
+2023-07-12 08:24:03.191 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:24:03.191 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:24:03.191 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 49.4079ms
+2023-07-12 08:24:03.191 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:24:03.191 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 58.0192ms
+2023-07-12 08:26:37.316 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:26:37.333 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:26:37.336 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:26:37.336 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:26:37.336 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:26:37.731 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:26:37.925 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 196.6470ms
+2023-07-12 08:26:37.962 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:26:37.962 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:26:37.965 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 3.0015ms
+2023-07-12 08:26:37.973 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.0875ms
+2023-07-12 08:26:38.276 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:26:38.281 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:26:38.300 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:26:38.378 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:26:38.390 +02:00 [INF] Fetching all tours
+2023-07-12 08:26:38.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 94.0985ms
+2023-07-12 08:26:39.265 +02:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:26:39.321 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:26:39.347 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1043.4313ms
+2023-07-12 08:26:39.347 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:26:39.351 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1074.5484ms
+2023-07-12 08:26:39.494 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:26:39.494 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:26:39.495 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:26:39.495 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:26:39.502 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:26:39.502 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:26:39.507 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:26:39.507 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:26:39.539 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:26:39.540 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:26:39.542 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 39.3345ms
+2023-07-12 08:26:39.542 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:26:39.542 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 47.7541ms
+2023-07-12 08:26:39.551 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:26:39.551 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:26:39.551 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 49.1121ms
+2023-07-12 08:26:39.551 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:26:39.552 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 57.4459ms
+2023-07-12 08:27:16.823 +02:00 [INF] Now listening on: https://localhost:7293
+2023-07-12 08:27:16.841 +02:00 [INF] Now listening on: http://localhost:5293
+2023-07-12 08:27:16.844 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-07-12 08:27:16.844 +02:00 [INF] Hosting environment: Development
+2023-07-12 08:27:16.845 +02:00 [INF] Content root path: C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerServer\
+2023-07-12 08:27:17.208 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2023-07-12 08:27:17.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 198.6445ms
+2023-07-12 08:27:17.433 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2023-07-12 08:27:17.433 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2023-07-12 08:27:17.435 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.1161ms
+2023-07-12 08:27:17.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.5845ms
+2023-07-12 08:27:17.756 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour - -
+2023-07-12 08:27:17.759 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:27:17.779 +02:00 [INF] Route matched with {action = "GetTours", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.Tour]]] GetTours() on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:27:17.849 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2023-07-12 08:27:17.868 +02:00 [INF] Fetching all tours
+2023-07-12 08:27:17.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 83.9426ms
+2023-07-12 08:27:18.738 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Description", t."Distance", t."EstTime", t."From", t."Name", t."To", t."TransportType"
+FROM "Tour" AS t
+ORDER BY t."Id"
+2023-07-12 08:27:18.797 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TourPlannerServer.Model.Tour, TourPlannerServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-07-12 08:27:18.823 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer) in 1040.2856ms
+2023-07-12 08:27:18.823 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTours (TourPlannerServer)'
+2023-07-12 08:27:18.827 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour - - - 200 - application/json;+charset=utf-8 1071.2982ms
+2023-07-12 08:27:18.977 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - -
+2023-07-12 08:27:18.977 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - -
+2023-07-12 08:27:18.977 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:27:18.977 +02:00 [INF] Executing endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:27:18.985 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:27:18.985 +02:00 [INF] Route matched with {action = "GetTourLogs", controller = "Tour"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TourPlannerServer.Model.TourLog]]] GetTourLogs(Int32) on controller TourPlannerServer.Controllers.TourController (TourPlannerServer).
+2023-07-12 08:27:18.990 +02:00 [INF] Fetching tourLogs for Tour with ID 4
+2023-07-12 08:27:18.990 +02:00 [INF] Fetching tourLogs for Tour with ID 2
+2023-07-12 08:27:19.022 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:27:19.022 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:27:19.024 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 39.0762ms
+2023-07-12 08:27:19.024 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:27:19.024 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/2/TourLogs - - - 404 - application/problem+json;+charset=utf-8 47.6732ms
+2023-07-12 08:27:19.034 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."Comment", t."Date", t."Difficulty", t."Duration", t."Rating", t."TourId"
+FROM "TourLog" AS t
+WHERE t."TourId" = @__id_0
+2023-07-12 08:27:19.034 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-07-12 08:27:19.034 +02:00 [INF] Executed action TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer) in 48.8014ms
+2023-07-12 08:27:19.034 +02:00 [INF] Executed endpoint 'TourPlannerServer.Controllers.TourController.GetTourLogs (TourPlannerServer)'
+2023-07-12 08:27:19.034 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7293/api/Tour/4/TourLogs - - - 404 - application/problem+json;+charset=utf-8 57.3079ms

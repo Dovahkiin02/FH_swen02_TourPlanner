@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ControlzEx.Theming;
+using MahApps.Metro.IconPacks;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using TourPlannerUi.Models;
 using TourPlannerUi.Services;
@@ -33,12 +36,18 @@ namespace TourPlannerUi.ViewModels {
         [ObservableProperty]
         private String searchText;
 
+        private String? currentTheme => ThemeManager.Current.DetectTheme(Application.Current)?.BaseColorScheme;
+
+        [ObservableProperty]
+        private PackIconMaterialKind themeIcon = PackIconMaterialKind.WeatherSunny;
+
         public ICommand CreateTourCommand { get; }
         public ICommand EditTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
         public ICommand GeneratePdfCommand { get; }
         public ICommand ExportDataCommand { get; }
         public ICommand ImportDataCommand { get; }
+        public ICommand ToggleTheme { get; }
 
         public TourListViewModel(INavigationService navService, ITourModel tourModel, TourLogModel tourLogModel) {
             _tourModel = tourModel;
@@ -56,6 +65,12 @@ namespace TourPlannerUi.ViewModels {
             ExportDataCommand = new RelayCommand<Tour>(OnExportData);
             GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
             ImportDataCommand = new RelayCommand(OnImportData);
+            ToggleTheme = new RelayCommand(OnToggleTheme);
+        }
+
+        private void OnToggleTheme() {
+            ThemeManager.Current.ChangeThemeBaseColor(Application.Current, currentTheme == "Light" ? "Dark" : "Light");
+            ThemeIcon = currentTheme == "Light" ? PackIconMaterialKind.WeatherNight : PackIconMaterialKind.WeatherSunny;
         }
 
         private async void LoadAndAssignToursAsync() {

@@ -17,8 +17,26 @@
       "Rating": 0,
       "Comment": "Ok, that was really damn easy",
       "TourId": 2
+    },
+    {
+      "Id": "2d8dfc31-1e8d-461d-aa2c-ac05239c7aa0",
+      "Date": "2023-07-10T22:00:00Z",
+      "Difficulty": 1,
+      "Duration": "00:20:00",
+      "Rating": 3,
+      "Comment": "dklsajgf\u00F6laksdjfg\u00F6lkasdjf\u00F6ghlkadj\u00F6gflkj",
+      "TourId": 2
+    },
+    {
+      "Id": "21be9027-c1f3-4680-b77a-845998f58fd9",
+      "Date": "2023-07-10T22:00:00Z",
+      "Difficulty": 0,
+      "Duration": "00:00:00",
+      "Rating": 2,
+      "Comment": "qwer",
+      "TourId": 2
     }
   ],
-  "Popularity": 1,
+  "Popularity": 3,
   "ChildFriendly": false
 }
