@@ -16,7 +16,7 @@ using TourPlannerUi.Services;
 namespace TourPlannerUi.ViewModels {
     public partial class EditTourLogViewModel : ViewModel {
         private INavigationService _navigation;
-        private TourLogModel _tourLogModel;
+        private ITourLogModel _tourLogModel;
         private Tour _tour;
 
         public IEnumerable<Difficulty> Difficulties {
@@ -33,7 +33,7 @@ namespace TourPlannerUi.ViewModels {
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public EditTourLogViewModel(Tour tour, INavigationService navService, TourLogModel tourLogModel) {
+        public EditTourLogViewModel(Tour tour, INavigationService navService, ITourLogModel tourLogModel) {
             _navigation = navService;
             _tourLogModel = tourLogModel;
             _tour = tour;
@@ -44,7 +44,7 @@ namespace TourPlannerUi.ViewModels {
             CancelCommand = new RelayCommand(OnCancel);
         }
 
-        public EditTourLogViewModel(TourLog? tourLog, Tour tour, INavigationService navService, TourLogModel tourLogModel) {
+        public EditTourLogViewModel(TourLog? tourLog, Tour tour, INavigationService navService, ITourLogModel tourLogModel) {
             _navigation = navService;
             _tourLogModel = tourLogModel;
             _tour = tour;

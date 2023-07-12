@@ -31,8 +31,10 @@ namespace TourPlannerUi {
 
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<ITourModel, TourModel>();
-            services.AddSingleton<TourLogModel>();
+            services.AddSingleton<ITourLogModel, TourLogModel>();
             services.AddSingleton<IMapQuestModel, MapQuestModel>();
+            services.AddSingleton<IGeneratePdfService, GeneratePdfService>();
+            services.AddSingleton<IDataIOService, DataIOService>();
             services.AddSingleton<TourListViewModel>();
 
             services.AddTransient<TourViewModel>();

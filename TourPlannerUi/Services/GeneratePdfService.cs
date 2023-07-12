@@ -21,7 +21,7 @@ namespace TourPlannerUi.Services
         void create(ObservableCollection<Tour> tours);
     }
 
-    public class GeneratePdf : IGeneratePdfService {
+    public class GeneratePdfService : IGeneratePdfService {
         
         private const string path = "..\\..\\..\\exports\\pdf";
         public void create(Tour tour) {

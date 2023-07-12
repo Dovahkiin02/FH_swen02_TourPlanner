@@ -33,7 +33,7 @@ namespace TourPlannerUi.Services {
 
         public void NavigateTo<TViewModel>(params object[] parameters) where TViewModel : ViewModel {
             ViewModel viewModel = _viewModelFactoryProvider().Create<TViewModel>(parameters);
-            CurrentView = viewModel;
+            if (viewModel != null) CurrentView = viewModel;
         }
     }
 }

@@ -14,18 +14,10 @@ namespace TourPlannerUi.ViewModels {
     public partial class TourListViewModel : ViewModel {
 
         private ITourModel _tourModel;
-        private TourLogModel _tourLogModel;
+        private ITourLogModel _tourLogModel;
         private INavigationService _navigation;
         private IGeneratePdfService _generatePdf;
         private IDataIOService _dataIO;
-
-        public INavigationService Navigation {
-            get => _navigation;
-            set {
-                _navigation = value;
-                OnPropertyChanged();
-            }
-        }
         public ObservableCollection<Tour> TourList => _tourModel.TourList;
 
         [ObservableProperty]
@@ -34,9 +26,9 @@ namespace TourPlannerUi.ViewModels {
         private bool _suppressNavigation = false;
 
         [ObservableProperty]
-        private String searchText;
+        private String searchText = "";
 
-        private String? currentTheme => ThemeManager.Current.DetectTheme(Application.Current)?.BaseColorScheme;
+        private String currentTheme => ThemeManager.Current.DetectTheme(Application.Current)?.BaseColorScheme ?? "Dark";
 
         [ObservableProperty]
         private PackIconMaterialKind themeIcon = PackIconMaterialKind.WeatherSunny;
@@ -49,15 +41,19 @@ namespace TourPlannerUi.ViewModels {
         public ICommand ImportDataCommand { get; }
         public ICommand ToggleTheme { get; }
 
-        public TourListViewModel(INavigationService navService, ITourModel tourModel, TourLogModel tourLogModel) {
+        public TourListViewModel(INavigationService navService,
+                                 ITourModel tourModel,
+                                 ITourLogModel tourLogModel,
+                                 IGeneratePdfService generatePdfService,
+                                 IDataIOService dataIOService) {
             _tourModel = tourModel;
             _tourLogModel = tourLogModel;
-            _generatePdf = new GeneratePdf();
-            _dataIO = new DataIO();
+            _generatePdf = generatePdfService;
+            _dataIO = dataIOService;
 
             LoadAndAssignToursAsync();
 
-            Navigation = navService;
+            _navigation = navService;
             
             CreateTourCommand = new RelayCommand(OnCreateTour);
             EditTourCommand = new RelayCommand<Tour>(OnEditTour);
@@ -90,7 +86,7 @@ namespace TourPlannerUi.ViewModels {
 
             _tourModel.TourList.Clear();
 
-            foreach (var tour in _tourModel.UnfilterdTourList) {
+            foreach (var tour in _tourModel.UnfilteredTourList) {
                 if (tour.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                     tour.Description.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                     tour.From.Contains(query, StringComparison.OrdinalIgnoreCase) ||
@@ -115,13 +111,13 @@ namespace TourPlannerUi.ViewModels {
                 return;
             }
             if (tour != null) {
-                Navigation.NavigateTo<TourViewModel>(tour);
+                _navigation.NavigateTo<TourViewModel>(tour);
             }
         }
 
         private void OnCreateTour() {
             _suppressNavigation = true;
-            Navigation.NavigateTo<CreateAndEditTourViewModel>();
+            _navigation.NavigateTo<CreateAndEditTourViewModel>();
         }
 
         private void OnGeneratePdf() {
@@ -138,7 +134,7 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private void OnEditTour(Tour? tour) {
-            Navigation.NavigateTo<CreateAndEditTourViewModel>(tour);
+            _navigation.NavigateTo<CreateAndEditTourViewModel>(tour);
             _suppressNavigation = true;
             SelectedTour = tour;
         }

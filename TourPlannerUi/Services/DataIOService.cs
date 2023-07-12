@@ -21,7 +21,7 @@ namespace TourPlannerUi.Services
         Tour importData();
     }
 
-    public class DataIO : IDataIOService {
+    public class DataIOService : IDataIOService {
 
         private Tour? importedTour;
         private const string path = "..\\..\\..\\exports\\json";

@@ -20,7 +20,7 @@ namespace TourPlannerUi.ViewModels {
         private Tour tour;
 
         private Tour unchangedTour;
-        private TourModel _tourModel;
+        private ITourModel _tourModel;
 
         private INavigationService _navigation;
 
@@ -31,7 +31,7 @@ namespace TourPlannerUi.ViewModels {
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public CreateAndEditTourViewModel(INavigationService navService, TourModel tourModel) {
+        public CreateAndEditTourViewModel(INavigationService navService, ITourModel tourModel) {
             this.tour = new();
             unchangedTour = tour;
             _tourModel = tourModel;
@@ -42,7 +42,7 @@ namespace TourPlannerUi.ViewModels {
             CancelCommand = new RelayCommand(OnCancel);
         }
 
-        public CreateAndEditTourViewModel(Tour tour, INavigationService navService, TourModel tourModel) {
+        public CreateAndEditTourViewModel(Tour tour, INavigationService navService, ITourModel tourModel) {
             this.tour = tour;
             unchangedTour = tour;
             _tourModel = tourModel;

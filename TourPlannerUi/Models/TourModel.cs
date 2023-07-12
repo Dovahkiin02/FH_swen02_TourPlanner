@@ -16,7 +16,7 @@ using System.Windows.Markup;
 namespace TourPlannerUi.Models {
     public interface ITourModel {
         ObservableCollection<Tour> TourList { get; set; }
-        List<Tour> UnfilterdTourList { get; }
+        List<Tour> UnfilteredTourList { get; }
         Task LoadToursAsync();
         Task<Tour?> UpsertTourAsync(Tour? tour);
         Task<HttpStatusCode> RemoveTourAsync(int tourId);
@@ -27,7 +27,7 @@ namespace TourPlannerUi.Models {
         private IMapQuestModel _mapQuestModel;
 
         public ObservableCollection<Tour> TourList { get; set; } = new();
-        public List<Tour> UnfilterdTourList { get; private set; } = new();
+        public List<Tour> UnfilteredTourList { get; private set; } = new();
         public TourModel(IMapQuestModel mapQuestModel) {
             _httpClient.BaseAddress = new("https://localhost:7293/api/");
             _mapQuestModel = mapQuestModel;
@@ -40,7 +40,7 @@ namespace TourPlannerUi.Models {
                 var tours = JsonConvert.DeserializeObject<List<Tour>>(content);
                 TourList.Clear();
                 tours?.ForEach((tour) => TourList.Add(tour));
-                UnfilterdTourList = TourList.ToList();
+                UnfilteredTourList = TourList.ToList();
             } else {
                 // Handle the error.
                 throw new Exception("Failed to load tours.");

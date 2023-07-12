@@ -17,7 +17,7 @@ namespace TourPlannerUi.ViewModels {
         [ObservableProperty]
         private Tour selectedTour;
 
-        private TourLogModel _tourLogModel;
+        private ITourLogModel _tourLogModel;
         private INavigationService _navigation;
         private IGeneratePdfService _generatePdf;
 
@@ -29,18 +29,17 @@ namespace TourPlannerUi.ViewModels {
         public ICommand GeneratePdfCommand { get; }
         //public ICommand LoadedCommand { get; }
 
-        public TourViewModel(Tour tour, TourLogModel tourLogModel, INavigationService navService)
+        public TourViewModel(Tour tour, ITourLogModel tourLogModel, INavigationService navService, IGeneratePdfService generatePdfService)
         {
             this.selectedTour = tour;
             _tourLogModel = tourLogModel;
             _navigation = navService;
-            _generatePdf = new GeneratePdf();
+            _generatePdf = generatePdfService;
 
             EditCommand = new RelayCommand<TourLog>(OnEdit);
             DeleteCommand = new RelayCommand<TourLog>(OnDelete);
             CreateCommand = new RelayCommand(OnCreate);
             GeneratePdfCommand = new RelayCommand(OnGeneratePdf);
-            //LoadedCommand = new RelayCommand(async () => await LoadAndAssignTourLogsAsync());
 
             LoadAndAssignTourLogsAsync();
         }

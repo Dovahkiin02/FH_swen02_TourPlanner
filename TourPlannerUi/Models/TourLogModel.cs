@@ -12,7 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TourPlannerUi.Models {
-    public class TourLogModel {
+
+    public interface ITourLogModel {
+        ObservableCollection<TourLog> TourLogs { get; set; }
+        Task LoadTourLogsAsync(int tourId);
+        Task<HttpStatusCode> RemoveTourLogAsync(Guid? tourLogId);
+        Task<HttpStatusCode> UpsertTourLogAsync(TourLog? tourLog);
+    }
+    public class TourLogModel : ITourLogModel {
         private HttpClient _httpClient = new();
         public ObservableCollection<TourLog> TourLogs { get; set; } = new();
 
