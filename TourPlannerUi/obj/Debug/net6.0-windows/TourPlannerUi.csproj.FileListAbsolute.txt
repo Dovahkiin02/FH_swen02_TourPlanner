@@ -238,3 +238,5 @@ C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\Tou
 C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\TourPlannerUi.pdb
 C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\TourPlannerUi.genruntimeconfig.cache
 C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\ref\TourPlannerUi.dll
+C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\Views\CustomButton.g.cs
+C:\Users\Manuel_work\Documents\FH\FH\semester02\swen02\FH_swen02_TourPlanner\TourPlannerUi\obj\Debug\net6.0-windows\Views\CustomButton.baml

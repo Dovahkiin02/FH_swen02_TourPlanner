@@ -16,7 +16,7 @@ namespace TourPlannerTests {
         private TourListViewModel _viewModel;
 
         [SetUp]
-        public void Init() {
+        public void SetUp() {
             _mockNavigationService = new Mock<INavigationService>();
             _mockTourModel = new Mock<ITourModel>();
             _mockTourLogModel = new Mock<TourLogModel>();

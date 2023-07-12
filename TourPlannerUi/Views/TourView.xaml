@@ -94,12 +94,12 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" >
+                                <local:CustomButton Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" ToolTip="Edit Tour Log" >
                                     <iconPacks:PackIconMaterial Kind="Pencil" VerticalAlignment="Center"/>
-                                </Button>
-                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="5, 0, 0, 0" >
+                                </local:CustomButton>
+                                <local:CustomButton Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" ToolTip="Delete Tour Log" Margin="5, 0, 0, 0" >
                                     <iconPacks:PackIconMaterial Kind="Delete" VerticalAlignment="Center"/>
-                                </Button>
+                                </local:CustomButton>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -110,14 +110,14 @@
             <Button  Command="{Binding CreateCommand}" HorizontalAlignment="Left" Margin="0, 5, 0, 0">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterial Kind="Plus" VerticalAlignment="Center"/>
-                    <TextBlock Text=" New Tour Log" VerticalAlignment="Center"/>
+                    <TextBlock Text="New Tour Log" VerticalAlignment="Center" Margin="5, 0, 0, 0" />
                 </StackPanel>
             </Button>
             
             <Button Command="{Binding GeneratePdfCommand}" HorizontalAlignment="Left" Margin="5, 5, 0, 0">
                 <StackPanel Orientation="Horizontal">
-                    <iconPacks:PackIconMaterial Kind="FilePdfBox" VerticalAlignment="Center"/>
-                    <TextBlock Text=" Gen. Pdf" VerticalAlignment="Center" Width="73"/>
+                    <iconPacks:PackIconMaterial Kind="FileDocumentOutline" VerticalAlignment="Center"/>
+                    <TextBlock Text="Tour Report" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
             </Button>
            </StackPanel>
