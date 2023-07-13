@@ -71,6 +71,7 @@ namespace TourPlannerUi.ViewModels {
 
         private async void LoadAndAssignToursAsync() {
             await _tourModel.LoadToursAsync();
+            _ = _tourModel.LoadAllImagesAsync();
             _tourModel.TourList.ToList().ForEach(async (tour) => {
                 await _tourLogModel.LoadTourLogsAsync(tour.Id);
                 tour.TourLogs.Clear();
@@ -111,6 +112,9 @@ namespace TourPlannerUi.ViewModels {
                 return;
             }
             if (tour != null) {
+                if (tour.Id == -1) {
+                    Console.WriteLine("Tell me why");
+                }
                 _navigation.NavigateTo<TourViewModel>(tour);
             }
         }

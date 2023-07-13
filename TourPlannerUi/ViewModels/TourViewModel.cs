@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using TourPlannerUi.Models;
 using TourPlannerUi.Services;
 
@@ -18,21 +19,25 @@ namespace TourPlannerUi.ViewModels {
         private Tour selectedTour;
 
         private ITourLogModel _tourLogModel;
+        private ITourModel _tourModel;
         private INavigationService _navigation;
         private IGeneratePdfService _generatePdf;
 
         public ObservableCollection<TourLog> TourLogs => _tourLogModel.TourLogs;
 
+        [ObservableProperty]
+        private BitmapImage tourImage;
+
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand CreateCommand { get; }
         public ICommand GeneratePdfCommand { get; }
-        //public ICommand LoadedCommand { get; }
 
-        public TourViewModel(Tour tour, ITourLogModel tourLogModel, INavigationService navService, IGeneratePdfService generatePdfService)
+        public TourViewModel(Tour tour, ITourLogModel tourLogModel, INavigationService navService, IGeneratePdfService generatePdfService, ITourModel tourModel)
         {
             this.selectedTour = tour;
             _tourLogModel = tourLogModel;
+            _tourModel = tourModel;
             _navigation = navService;
             _generatePdf = generatePdfService;
 
@@ -46,6 +51,7 @@ namespace TourPlannerUi.ViewModels {
 
         private async void LoadAndAssignTourLogsAsync() {
             await _tourLogModel.LoadTourLogsAsync(SelectedTour.Id);
+            TourImage = await _tourModel.GetMapImageAsync(SelectedTour);
             try {
                 SelectedTour.TourLogs.Clear();
                 TourLogs.ToList().ForEach(tourLog => SelectedTour.TourLogs.Add(tourLog));

@@ -78,7 +78,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Tour Map">
-                <Image Source="{Binding SelectedTour.MapImageUrl}" />
+                <Image Source="{Binding TourImage}" />
             </TabItem>
         </TabControl>
 

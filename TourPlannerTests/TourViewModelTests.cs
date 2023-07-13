@@ -15,6 +15,7 @@ namespace TourPlannerTests {
     public class TourViewModelTests {
         private Mock<INavigationService> _mockNavigationService;
         private Mock<ITourLogModel> _mockTourLogModel;
+        private Mock<ITourModel> _mockTourModel;
         private Mock<IGeneratePdfService> _mockGeneratePdfService;
         private TourViewModel _viewModel;
 
@@ -22,12 +23,14 @@ namespace TourPlannerTests {
         public void SetUp() {
             _mockNavigationService = new Mock<INavigationService>();
             _mockTourLogModel = new Mock<ITourLogModel>();
+            _mockTourModel = new Mock<ITourModel>();
             _mockGeneratePdfService = new Mock<IGeneratePdfService>();
             _viewModel = new TourViewModel(
                 new Tour { Id = 1 },
                 _mockTourLogModel.Object,
                 _mockNavigationService.Object,
-                _mockGeneratePdfService.Object
+                _mockGeneratePdfService.Object,
+                _mockTourModel.Object
             );
         }
 

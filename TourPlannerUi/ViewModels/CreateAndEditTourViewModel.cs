@@ -79,7 +79,10 @@ namespace TourPlannerUi.ViewModels {
         }
 
         private void OnCancel() {
-            _navigation.NavigateTo<TourViewModel>(unchangedTour);
+            _navigation.NavigateTo<TourViewModel>(
+                unchangedTour.Id == -1 ?
+                _tourModel.TourList.First() :
+                unchangedTour);
         }
 
     }

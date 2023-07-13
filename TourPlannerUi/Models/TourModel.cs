@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Markup;
+using System.Windows.Media.Imaging;
 
 namespace TourPlannerUi.Models {
     public interface ITourModel {
@@ -21,10 +23,14 @@ namespace TourPlannerUi.Models {
         Task<Tour?> UpsertTourAsync(Tour? tour);
         Task<HttpStatusCode> RemoveTourAsync(int tourId);
 
+        Task<BitmapImage> GetMapImageAsync(Tour tour);
+
+        Task LoadAllImagesAsync();
     }
     public class TourModel : ITourModel {
         private HttpClient _httpClient = new();
         private IMapQuestModel _mapQuestModel;
+        private ConcurrentDictionary<string, BitmapImage> _imageCache = new();
 
         public ObservableCollection<Tour> TourList { get; set; } = new();
         public List<Tour> UnfilteredTourList { get; private set; } = new();
@@ -66,7 +72,11 @@ namespace TourPlannerUi.Models {
                 using var response = await _httpClient.PostAsync("Tour/Upsert", httpContent);
 
                 try {
-                    return JsonConvert.DeserializeObject<Tour>(await response.Content.ReadAsStringAsync());
+                    Tour? newTour = JsonConvert.DeserializeObject<Tour>(await response.Content.ReadAsStringAsync());
+                    if (newTour != null) {
+                        _ = GetMapImageAsync(newTour);
+                    }
+                    return newTour;
                 } catch {
                     return null;
                 }
@@ -80,7 +90,46 @@ namespace TourPlannerUi.Models {
             }
             var response = await _httpClient.DeleteAsync($"Tour/{tourId}");
 
+            if (response.IsSuccessStatusCode) {
+                Tour deletedTour = UnfilteredTourList.Find(tour => tour.Id == tourId);
+                if (deletedTour != null)
+                    _imageCache.TryRemove(deletedTour.MapImageUrl, out _);
+            }
+
             return response.StatusCode;
+        }
+
+        public async Task<BitmapImage> GetMapImageAsync(Tour tour) {
+            string url = tour.MapImageUrl;
+
+            if (_imageCache.TryGetValue(url, out BitmapImage cachedImage)) {
+                return cachedImage;
+            }
+
+            using (var response = await _httpClient.GetAsync(url)) {
+                if (response.IsSuccessStatusCode) {
+                    using (var stream = await response.Content.ReadAsStreamAsync()) {
+                        BitmapImage image = new();
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = stream;
+                        image.EndInit();
+
+                        _imageCache[url] = image;
+
+                        return image;
+                    }
+                } else {
+                    await Console.Out.WriteLineAsync("asdf");
+                    throw new Exception("Failed to load image.");
+                }
+            }
+        }
+
+        public Task LoadAllImagesAsync() {
+            UnfilteredTourList.ForEach(tour => GetMapImageAsync(tour));
+
+            return Task.CompletedTask;
         }
     }
 
@@ -124,14 +173,12 @@ namespace TourPlannerUi.Models {
 
         public string MapImageUrl {
             get {
-                string apiKey = "8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH"; 
-                string size = "600,400@2x"; 
-                string format = "png"; 
-                string routeColor = "812DD3"; 
+                string apiKey = "8C4bpxYEsGo8bNfYa815QRoUBlXrlnYH";
+                string size = "600,400@2x";
+                string format = "png";
+                string routeColor = "812DD3";
 
-                string url = $"https://www.mapquestapi.com/staticmap/v5/map?key={apiKey}&size={size}&format={format}&start={From}|flag-start&end={To}|flag-end&routeColor={routeColor}";
-
-                return url;
+                return $"https://www.mapquestapi.com/staticmap/v5/map?key={apiKey}&size={size}&format={format}&start={From}|flag-start&end={To}|flag-end&routeColor={routeColor}";
             }
         }
 
@@ -143,6 +190,8 @@ namespace TourPlannerUi.Models {
 
                 return TourLogs.Count;
             }
+
+            
         }
 
         public bool ChildFriendly {

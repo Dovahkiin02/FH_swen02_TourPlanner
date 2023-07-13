@@ -62,6 +62,9 @@ namespace TourPlannerUi.ViewModels {
             }
             HttpStatusCode status = await _tourLogModel.UpsertTourLogAsync(TourLog);
             if (status == HttpStatusCode.Created) {
+                if (_tour.Id == -1) {
+                    await Console.Out.WriteLineAsync("what");
+                }
                 _navigation.NavigateTo<TourViewModel>(_tour);
             } else {
                 MessageBox.Show(status.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);

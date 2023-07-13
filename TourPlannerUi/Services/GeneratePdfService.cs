@@ -13,6 +13,7 @@ using System.Text;
 using System.Linq;
 using System;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace TourPlannerUi.Services
 {
@@ -22,8 +23,15 @@ namespace TourPlannerUi.Services
     }
 
     public class GeneratePdfService : IGeneratePdfService {
+
+        private ITourModel _tourModel;
         
         private const string path = "..\\..\\..\\exports\\pdf";
+
+        public GeneratePdfService(ITourModel tourModel) {
+            _tourModel = tourModel;
+        }
+
         public void create(Tour tour) {
             string fullPath = Path.Combine(path,$"{tour.Name}_tourLog.pdf");   
 
@@ -95,7 +103,7 @@ namespace TourPlannerUi.Services
                 document.Add(new Paragraph($"{tour.Name}").SetBold());
                 
                 if (!string.IsNullOrEmpty(tour.MapImageUrl)) {
-                    Image image = new Image(ImageDataFactory.Create(tour.MapImageUrl));
+                    Image image = GetImage(tour);
 
                     image.SetWidth(document.GetPdfDocument().GetDefaultPageSize().GetWidth() - document.GetLeftMargin() - document.GetRightMargin());
                     image.SetProperty(Property.FLOAT, FloatPropertyValue.LEFT);
@@ -129,6 +137,25 @@ namespace TourPlannerUi.Services
             }
 
             document.Close();
+        }
+
+        private Image GetImage(Tour tour) {
+            return ConvertToPdfImage(_tourModel.GetMapImageAsync(tour).GetAwaiter().GetResult());
+        }
+
+        private Image ConvertToPdfImage(BitmapImage bitmapImage) {
+            byte[] imageData;
+
+            // Convert the BitmapImage to a byte array.
+            using (var stream = new MemoryStream()) {
+                var encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+                encoder.Save(stream);
+                imageData = stream.ToArray();
+            }
+
+            // Create an iText Image object from the byte array.
+            return new Image(ImageDataFactory.Create(imageData));
         }
     }
 }
